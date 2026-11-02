@@ -1,0 +1,181 @@
+{
+  "files": [
+    {
+      "file": "atrium.bin",
+      "bytes": 301480,
+      "gzip": 89432,
+      "brotli": 64489
+    },
+    {
+      "file": "atrium.gltf",
+      "bytes": 29467,
+      "gzip": 3463,
+      "brotli": 2783
+    },
+    {
+      "file": "design.bin",
+      "bytes": 414004,
+      "gzip": 111958,
+      "brotli": 78368
+    },
+    {
+      "file": "design.gltf",
+      "bytes": 24544,
+      "gzip": 3036,
+      "brotli": 2467
+    },
+    {
+      "file": "high/lightmap-office-day.webp",
+      "bytes": 1298988,
+      "gzip": 1280802,
+      "brotli": 1278052
+    },
+    {
+      "file": "high/lightmap-office-evening.webp",
+      "bytes": 1535072,
+      "gzip": 1517978,
+      "brotli": 1515116
+    },
+    {
+      "file": "lightmap-atrium-day.webp",
+      "bytes": 268264,
+      "gzip": 264547,
+      "brotli": 264102
+    },
+    {
+      "file": "lightmap-atrium-evening.webp",
+      "bytes": 356020,
+      "gzip": 353086,
+      "brotli": 352570
+    },
+    {
+      "file": "lightmap-design-day.webp",
+      "bytes": 415134,
+      "gzip": 414782,
+      "brotli": 415139
+    },
+    {
+      "file": "lightmap-design-evening.webp",
+      "bytes": 222058,
+      "gzip": 221685,
+      "brotli": 222063
+    },
+    {
+      "file": "lightmap-office-day.webp",
+      "bytes": 468076,
+      "gzip": 465348,
+      "brotli": 464761
+    },
+    {
+      "file": "lightmap-office-evening.webp",
+      "bytes": 501408,
+      "gzip": 498677,
+      "brotli": 501413
+    },
+    {
+      "file": "lightmap-research-day.webp",
+      "bytes": 966310,
+      "gzip": 965859,
+      "brotli": 966315
+    },
+    {
+      "file": "lightmap-research-evening.webp",
+      "bytes": 526798,
+      "gzip": 526277,
+      "brotli": 526803
+    },
+    {
+      "file": "manifest.json",
+      "bytes": 26568,
+      "gzip": 3887,
+      "brotli": 3276
+    },
+    {
+      "file": "office.bin",
+      "bytes": 1051752,
+      "gzip": 273695,
+      "brotli": 183613
+    },
+    {
+      "file": "office.gltf",
+      "bytes": 19928,
+      "gzip": 2592,
+      "brotli": 2156
+    },
+    {
+      "file": "research.bin",
+      "bytes": 998248,
+      "gzip": 250884,
+      "brotli": 177951
+    },
+    {
+      "file": "research.gltf",
+      "bytes": 21096,
+      "gzip": 2681,
+      "brotli": 2170
+    },
+    {
+      "file": "textures/fabric.jpg",
+      "bytes": 73749,
+      "gzip": 73518,
+      "brotli": 73018
+    },
+    {
+      "file": "textures/floor.jpg",
+      "bytes": 45490,
+      "gzip": 45054,
+      "brotli": 44562
+    },
+    {
+      "file": "textures/lightwood.jpg",
+      "bytes": 48227,
+      "gzip": 47604,
+      "brotli": 46861
+    },
+    {
+      "file": "textures/oak.jpg",
+      "bytes": 39364,
+      "gzip": 38733,
+      "brotli": 38131
+    },
+    {
+      "file": "textures/plaster.jpg",
+      "bytes": 18820,
+      "gzip": 18352,
+      "brotli": 18219
+    },
+    {
+      "file": "textures/rug.jpg",
+      "bytes": 94930,
+      "gzip": 94784,
+      "brotli": 94935
+    },
+    {
+      "file": "textures/tile.jpg",
+      "bytes": 78952,
+      "gzip": 77061,
+      "brotli": 76500
+    },
+    {
+      "file": "textures/walnut.jpg",
+      "bytes": 25989,
+      "gzip": 25335,
+      "brotli": 24951
+    }
+  ],
+  "total": {
+    "bytes": 9870736,
+    "gzip": 7671110,
+    "brotli": 7440784
+  },
+  "defaultTier": {
+    "bytes": 7036676,
+    "brotli": 4647616
+  },
+  "highTierOnly": {
+    "bytes": 2834060
+  },
+  "budgetBytes": 10000000,
+  "budgetNote": "10 MB (10,000,000 bytes) for the whole baked office, compressed (owner, R3a); checked against bytes as served; R4a: the default tier's download (all but high/)",
+  "note": "bytes = as served (JPEG textures, WebP lightmaps: already compressed; the glTF JSON and geometry are not); gzip/brotli = what HTTP compression would give"
+}

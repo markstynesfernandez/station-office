@@ -1,0 +1,17 @@
+{
+  "$comment": "R1: the template for a new product. NEVER loaded (a file whose name starts with _ is skipped). Copy it to config/products/<id>.json and fill in every field. Every figure is the owner's: list a figure still under discussion in `proposals`.",
+  "id": "the product id: lowercase letters, digits and hyphens, the same as the file name; stored as product_id on every job, run, routine, request, ledger row and event",
+  "name": "the name shown in the Owner's office and Finance",
+  "status": "active or archived (an archived product's lines refuse every start)",
+  "repo": "the product repository (owner/name), or null",
+  "monthlyBudgetUsd": "a positive number: the most this product may spend in a Dublin calendar month; the guard refuses a call past it",
+  "dailyCapUsd": "optional: a positive number at most the station's caps.perDayUsd (null: the station's day cap applies)",
+  "jobCapUsdByDepartment": "department id -> USD per job for this product's jobs in that department; never above the station's caps.perJobUsd (the lowest cap wins)",
+  "decided": "figure -> who decided it and when",
+  "proposals": "the figures that are proposals, not decisions",
+  "runChecks": "check name -> argv (R2: run_check, inside Docker with --network none); optional",
+  "readOnlyApi": "the product's read-only interface for the Station (R6), or null",
+  "policy": "action -> level overrides; only stricter than config/autonomy.json (auto < owner < forbidden)",
+  "dataDir": "products/<id>/ under the data root (\".\" is the archived Etsy layout only)",
+  "ownerApprovalRequired": "true (the only value accepted: every outbound or irreversible action waits for the owner)"
+}

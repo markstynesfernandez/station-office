@@ -1,0 +1,50 @@
+{
+  "$comment": "The genre-trend scouting line (DECISIONS.md 'Genre-trend scouting'). Started by the 'Weekly genre scout' routine (seeded disabled) or by hand. scout-retention (engine) first deletes scouting notes more than 90 days old (logged; the blocklist stays). TREND-SCOUT writes internal notes (scouting/<day>/<jobId>/notes.json: one file per job, E6 b3) and 4 genre briefs in this line's own drafts folder (scout-drafts/<day>/, so the research line can run the same day); scout-notes (engine) checks the notes, adds every recorded name to the scouting blocklist and blocks any genre brief naming a scouted game; EVIDENCE-CHECKER then checks the rest as usual; brief-check copies a verified brief to briefs/ or rejected/. The notes never leave the research folder. E6 b1 `outputs`: the output contract the runtime checks when the agent ends its turn (2 nudges at most, then the job ends incomplete; a partial set of drafts continues with the shortfall recorded). E6 b3: every job's noted names go on the blocklist whenever the job ends, whatever the outcome. E6 b2 (owner D1-D3): report_blocked(reason) ends the job incomplete at once; drafts are validated on write against the genre brief schema (lib/scout-brief.mjs, indicative evidence from web search results only); `returnedSources` gives EVIDENCE-CHECKER the URLs the job's web calls returned (the transcript), the only ones a brief may cite.",
+  "id": "genre-scout",
+  "label": "Genre scout",
+  "routineLabel": "Genre-trend scout",
+  "maxConcurrentJobs": 1,
+  "maxHops": 4,
+  "start": "scout-retention",
+  "kind": "research",
+  "drafts": "scout-drafts",
+  "$productKeyComment": "OWNER DECISION 17/10/2026 (DECISIONS.md 'E6 step b2: product key as data'): the product key is data, never prose. Every job of this line carries product_key (given by scout-live's --product-key or the routine seed in config/routines.json; otherwise this default). The engine checks it against config/products.json before any step, model call or reservation (unknown or missing: the job ends incomplete, 'unknown product key: <key>', USD 0) and hands it to TREND-SCOUT as a 'product_key: <key>' line in the run input.",
+  "requiresProductKey": true,
+  "productKey": "pngtuber-prop-pack",
+  "steps": {
+    "scout-retention": {
+      "kind": "mechanical",
+      "fn": "scoutRetention",
+      "column": "brief",
+      "next": "trend-scout"
+    },
+    "trend-scout": {
+      "kind": "agent",
+      "agent": "trend-scout",
+      "outputs": { "kind": "drafts", "tool": "fs_write", "count": 4, "partialOk": true },
+      "column": "brief",
+      "next": "scout-notes"
+    },
+    "scout-notes": {
+      "kind": "mechanical",
+      "fn": "scoutNotes",
+      "column": "brief",
+      "next": "evidence-checker"
+    },
+    "evidence-checker": {
+      "kind": "agent",
+      "agent": "evidence-checker",
+      "outputs": { "kind": "verdicts", "tool": "fs_write" },
+      "returnedSources": true,
+      "column": "brief",
+      "next": "brief-check"
+    },
+    "brief-check": {
+      "kind": "mechanical",
+      "fn": "briefCheck",
+      "column": "brief",
+      "next": null,
+      "end": "research-done"
+    }
+  }
+}

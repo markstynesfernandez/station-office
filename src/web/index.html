@@ -1,0 +1,96 @@
+<!doctype html>
+<html lang="en-IE">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Station</title>
+<link rel="stylesheet" href="/styles.css">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='8' fill='%23e9e4dc'/%3E%3Crect x='7' y='9' width='18' height='4' rx='2' fill='%23c7a4d6'/%3E%3Crect x='7' y='15' width='18' height='4' rx='2' fill='%238fb5d6'/%3E%3Crect x='7' y='21' width='18' height='4' rx='2' fill='%23a9cfa6'/%3E%3C/svg%3E">
+<script type="importmap">
+{ "imports": { "three": "/vendor/three/build/three.module.js", "three/addons/": "/vendor/three/examples/jsm/" } }
+</script>
+</head>
+<body data-theme="light">
+<div id="app">
+  <header id="topbar">
+    <span class="tb-brand"><span class="tb-dot"></span><span id="station-name">Station</span></span>
+    <span id="instance-badge" class="badge hidden"></span>
+    <span id="source-badge" class="badge badge-muted">loading</span>
+    <span id="synthetic-badge" class="badge badge-syn hidden">synthetic states</span>
+    <span id="demo-badge" class="badge badge-demo hidden" title="Demo mode: the real engine on the mock provider, with a scripted day on its own data root (data-demo/). Nothing here is real station data; no model is called and nothing is charged.">DEMO · simulated data</span>
+    <button id="demo-ctl" class="badge badge-muted demo-ctl hidden" title="demo: Space pause/resume · 1 2 4 speed · R restart"></button>
+    <span class="tb-sep"></span>
+    <span id="floors" class="tb-floors hidden" role="tablist" aria-label="floors of the building"></span>
+    <span class="tb-sep"></span>
+    <span id="services" class="tb-services"></span>
+    <button id="etsy-btn" class="badge badge-muted etsy-btn" title="Etsy: your own shop, read only (connect, live listings with their ids)">Etsy</button>
+    <span class="tb-fill"></span>
+    <span id="spend-today" class="tb-spend"></span>
+    <span id="cap-warn" class="badge badge-warn hidden"></span>
+    <span class="tb-sep"></span>
+    <button id="estop" class="btn-estop hidden" title="E-stop: abort every model and image call now">E-STOP</button>
+    <span id="clock" class="tb-clock">--:--</span>
+    <select id="quality" class="tb-quality" aria-label="rendering quality"><option value="auto">Auto</option><option value="default">Default</option><option value="high">High</option></select>
+    <button id="theme-toggle" class="btn-icon" title="dark mode (D)">◐</button>
+  </header>
+
+  <main id="stage">
+    <canvas id="scene"></canvas>
+    <div id="labels"></div>
+    <div id="floor-nav"><button id="floor-btn" class="floor-btn hidden" aria-haspopup="true" aria-expanded="false" aria-controls="floor-menu" title="floors and departments: go to any department (F)"><span class="fb-icon" aria-hidden="true">☰</span>Floors <b>F</b></button><div id="floor-caption" class="floor-caption hidden"></div></div>
+    <div id="floor-menu" class="floor-menu hidden" role="menu" aria-label="floors and departments"></div>
+    <div id="scene-controls">
+      <button id="zoom-in" class="btn-icon" title="zoom in (+)">+</button>
+      <button id="zoom-out" class="btn-icon" title="zoom out (−)">−</button>
+      <button id="reset-view" class="btn-icon" title="reset view (R)">⌂</button>
+    </div>
+    <div id="warnings" class="warnings hidden"></div>
+    <div id="perf" class="perf hidden"></div>
+    <div id="caption" class="caption hidden" aria-live="polite"></div>
+    <div id="toasts" class="toasts" aria-live="polite"></div>
+  </main>
+
+  <aside id="taskpanel">
+    <section class="tp-new">
+      <div class="tp-head"><span>New task</span><span id="task-mode" class="muted small"></span></div>
+      <!-- R7a.2: what the floor shown can start (taskpanel.js floorWork): Engineering's New issue, or the floor's phase; the Etsy controls only in the archive -->
+      <div id="task-floor" class="tp-floor hidden"><div class="tp-note tp-floor-text" id="task-floor-text"></div><button class="btn btn-primary hidden" id="task-new-issue" title="open the Engineering panel's issue form">New issue</button><button class="btn btn-primary hidden" data-exec-now="coo-report" title="one COO run: today's operations report (spend confirmation first)">COO report now…</button><button class="btn hidden" data-exec-now="ceo-memo" title="one CEO run: this week's memo and proposals (spend confirmation first)">CEO memo now…</button></div>
+      <div id="task-etsy">
+      <div class="tp-tabs" role="tablist"><button class="chip chip-on" data-tab="research" role="tab">Research this</button><button class="chip" data-tab="brief" role="tab">Start line on brief</button><button class="chip" data-tab="rerun" role="tab">Re-run listing</button></div>
+      <div class="tp-pane" data-pane="research">
+        <textarea id="task-research" rows="3" maxlength="2000" placeholder="What should DEMAND-RESEARCHER look into? e.g. cosy autumn sticker niches with steady demand"></textarea>
+        <div class="tp-row"><span class="tp-note">a research job on the research line</span><button class="btn btn-primary" data-go="research">Research this</button></div>
+        <div class="tp-note tp-indicative">Demand evidence from research is indicative: non-Etsy sources only (no Etsy data until Etsy authorises it in writing).</div>
+      </div>
+      <div class="tp-pane hidden" data-pane="brief">
+        <select id="task-brief"></select>
+        <div class="tp-row"><span class="tp-note" id="task-brief-note">verified and owner briefs in research/briefs/</span><button class="btn btn-primary" data-go="brief">Start line</button></div>
+        <div class="tp-row"><select id="task-product" title="the product the new owner brief is for (products.json)"></select><button class="btn" data-go="owner-brief" title="write an owner brief: title, theme, the items, price bounds; saved after the intake checks">New owner brief…</button></div>
+      </div>
+      <div class="tp-pane hidden" data-pane="rerun">
+        <select id="task-rerun"></select>
+        <div class="tp-row"><span class="tp-note">the old listing moves to rerun-archive-*</span><button class="btn btn-primary" data-go="rerun">Re-run listing</button></div>
+      </div>
+      </div>
+    </section>
+    <section class="tp-filters">
+      <div class="tp-head"><span>Tasks</span><span class="scope"><select id="task-dept" title="department for 'this department'"></select><button class="chip chip-on" data-scope="office">whole office</button><button class="chip" data-scope="dept">this department</button></span></div>
+      <div id="task-filters" class="filters"></div>
+    </section>
+    <section id="task-list" class="tp-list"></section>
+  </aside>
+
+  <aside id="sidepanel" class="hidden"><div id="sidepanel-body"></div></aside>
+
+  <section id="board" class="overlay hidden"><div class="overlay-head"><h2>Board</h2><span class="muted">jobs by stage · Esc to close</span></div><div id="board-body"></div></section>
+  <section id="calendar" class="overlay hidden"><div id="calendar-body"></div></section>
+  <section id="building" class="overlay hidden"><div class="overlay-head"><h2>Whole building</h2><span class="muted">every floor's totals · click a floor to go there · Esc to close</span></div><div id="building-body"></div></section>
+  <section id="eng" class="overlay hidden"><div class="overlay-head"><h2>Engineering</h2><span class="muted">ReplyDesk · issues, jobs and your decisions · only you act here · Esc to close</span></div><div id="eng-body"></div></section>
+  <section id="ledger" class="overlay hidden"><div class="overlay-head"><h2>Station memory</h2><span class="muted">notebooks + ledger · Esc to close</span></div><div id="ledger-body"></div></section>
+
+  <footer id="hints"><span><b>B</b> board</span><span><b>C</b> calendar</span><span><b>T</b> today</span><span><b>←↑↓→</b> move</span><span><b>+ −</b> zoom</span><span id="hint-reset"><b>R</b> reset</span><span id="hint-demo" class="hidden"><b>Space</b> pause <b>1 2 4</b> speed <b>R</b> restart</span><span><b>P</b> presenter</span><span><b>D</b> dark</span><span><b>F</b> floors</span><span><b>⇧F</b> fps</span><span><b>Esc</b> close</span><span id="hint-status" class="muted"></span><span id="etsy-notice" class="muted etsy-notice">The term 'Etsy' is a trademark of Etsy, Inc. This Application uses Etsy's API, but is not endorsed or certified by Etsy.</span></footer>
+</div>
+<div id="dialogs"></div>
+<script type="module" src="/main.js"></script>
+</body>
+</html>

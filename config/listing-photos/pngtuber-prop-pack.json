@@ -1,0 +1,87 @@
+{
+  "$comment": "The owner's listing-photo plan for the PNGTuber cosy desk props (legacy make-listing-photos.mjs, owner 2026-10-17, ported word for word at the 5th port moment). Read by src/engine/owner.mjs makeListingPhotos and scripts/parity-pngtuber.mjs. Scene units are free (centre x, baseline, height; later entries are drawn in front).",
+  "product": "pngtuber-prop-pack",
+  "decidedBy": "owner",
+  "date": "2026-10-17",
+  "ownerWords": "Make clean Etsy listing photos, $0, no model or image-generation calls (deterministic compositing of the 12 approved PNGs only). 01-hero: all 12 props in a tidy grid on a soft warm background, 3000x2250 (4:3), nothing cropped at the edges. 02-on-dark: the same grid on a dark background, to show the transparency. 03-scene: the props arranged together as one cozy desk scene on a plain background, showing how they look in use. 04 to 07: close-ups of 4 props (mug, cat on cushion, candle, headphones), each 2000x2000. No text on the images, no QA labels, no watermarks. Correction: don't touch the approved package or its MANIFEST.json; save the listing photos in work/<id>/listing-photos/ with a small photos.json listing each file's sha256. They're for the Etsy page only, not the buyer download.",
+  "scene": [
+    {
+      "name": "02-desk-plant.png",
+      "cx": 380,
+      "base": 1000,
+      "h": 720
+    },
+    {
+      "name": "05-book-stack.png",
+      "cx": 900,
+      "base": 1000,
+      "h": 560
+    },
+    {
+      "name": "03-headphones-stand.png",
+      "cx": 1440,
+      "base": 1000,
+      "h": 820
+    },
+    {
+      "name": "10-water-bottle.png",
+      "cx": 1960,
+      "base": 1000,
+      "h": 580
+    },
+    {
+      "name": "04-desk-lamp.png",
+      "cx": 2470,
+      "base": 1000,
+      "h": 940
+    },
+    {
+      "name": "09-sticky-notes.png",
+      "cx": 420,
+      "base": 1530,
+      "h": 300
+    },
+    {
+      "name": "01-steaming-mug.png",
+      "cx": 930,
+      "base": 1530,
+      "h": 430
+    },
+    {
+      "name": "07-sleeping-cat.png",
+      "cx": 1500,
+      "base": 1530,
+      "h": 520
+    },
+    {
+      "name": "06-snack-bowl.png",
+      "cx": 2080,
+      "base": 1530,
+      "h": 340
+    },
+    {
+      "name": "08-candle-jar.png",
+      "cx": 2560,
+      "base": 1530,
+      "h": 440
+    }
+  ],
+  "closeUps": [
+    [
+      "04-closeup-mug.jpg",
+      "01-steaming-mug.png"
+    ],
+    [
+      "05-closeup-cat-on-cushion.jpg",
+      "07-sleeping-cat.png"
+    ],
+    [
+      "06-closeup-candle.jpg",
+      "08-candle-jar.png"
+    ],
+    [
+      "07-closeup-headphones.jpg",
+      "03-headphones-stand.png"
+    ]
+  ]
+}

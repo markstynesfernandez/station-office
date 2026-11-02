@@ -1,0 +1,102 @@
+{
+  "$comment": "R2 (RESTRUCTURE.md §8 R2): the engineering line on a product's code (src/engine/engineering.mjs). Started by the owner on one owner-approved issue the CTO has assigned (backlog/dev-queue.json), behind the spend confirmation. A TESTER fail or a REVIEWER / SECURITY revise sends the job back to DEVELOPER with the findings, at most reworkMax times in all, then the job blocks; a CTO revise sends the spec back to TECH-LEAD at most specReworkMax times. A refuse ends the job rejected (no merge request). The job ends in the Owner's office as a git.merge request; the engine never pushes.",
+  "id": "engineering",
+  "label": "Engineering",
+  "kind": "engineering",
+  "products": [
+    "replydesk"
+  ],
+  "maxConcurrentJobs": 1,
+  "estimateUsd": {
+    "note": "the plan's estimate, not a measurement (RESTRUCTURE.md §8 R2, R0.3 models, before thinking tokens; a large spec adds the CTO's review, about USD 0.16): one pass about USD 1.36; with one rework about USD 2.14; a rework alone 2.14 - 1.36 = USD 0.78 (DEVELOPER about 0.50, TESTER 0.01, REVIEWER 0.14, SECURITY 0.13). The job cap is the limit.",
+    "job": 1.36,
+    "rework": 0.78
+  },
+  "borrows": [
+    "cto",
+    "security"
+  ],
+  "reworkMax": 2,
+  "specReworkMax": 2,
+  "start": "worktree",
+  "steps": {
+    "worktree": {
+      "kind": "mechanical",
+      "fn": "worktree",
+      "column": "spec",
+      "next": "tech-lead"
+    },
+    "tech-lead": {
+      "kind": "agent",
+      "agent": "tech-lead",
+      "writes": [
+        "spec.md"
+      ],
+      "column": "spec",
+      "next": "cto-review"
+    },
+    "cto-review": {
+      "kind": "agent",
+      "agent": "cto",
+      "verdict": "architecture",
+      "when": "large",
+      "column": "spec",
+      "next": "developer"
+    },
+    "developer": {
+      "kind": "agent",
+      "agent": "developer",
+      "writes": [
+        "repo/**",
+        "notes.md"
+      ],
+      "column": "build",
+      "next": "checks"
+    },
+    "checks": {
+      "kind": "mechanical",
+      "fn": "checks",
+      "column": "build",
+      "next": "diff"
+    },
+    "diff": {
+      "kind": "mechanical",
+      "fn": "diff",
+      "column": "build",
+      "next": "tester"
+    },
+    "tester": {
+      "kind": "agent",
+      "agent": "tester",
+      "verdict": "test",
+      "column": "test",
+      "next": "reviewer"
+    },
+    "reviewer": {
+      "kind": "agent",
+      "agent": "reviewer",
+      "verdict": "review",
+      "column": "review",
+      "next": "security"
+    },
+    "security": {
+      "kind": "agent",
+      "agent": "security",
+      "verdict": "security",
+      "column": "review",
+      "next": "commit"
+    },
+    "commit": {
+      "kind": "mechanical",
+      "fn": "commit",
+      "column": "merge-request",
+      "next": "merge-request"
+    },
+    "merge-request": {
+      "kind": "mechanical",
+      "fn": "mergeRequest",
+      "column": "merge-request",
+      "next": null
+    }
+  }
+}

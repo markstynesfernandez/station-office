@@ -1,0 +1,20 @@
+{
+  "$comment": "R1: the second product (package name inbox-copilot). Synthetic data only: no company or tenant data ever enters the Station (owner, R0.3; config/building.json foreignDataMarkers). Its budget and job caps are proposals (RESTRUCTURE.md §9.2 item 3).",
+  "id": "emty-inbox",
+  "name": "emty-inbox",
+  "status": "active",
+  "phase": "after ReplyDesk",
+  "repo": "markstynesfernandez/emty-inbox",
+  "monthlyBudgetUsd": 40,
+  "dailyCapUsd": null,
+  "jobCapUsdByDepartment": { "engineering": 3, "security-data": 0.5, "product-design": 0.5, "sales-marketing": 0.5, "customer-success": 0.5 },
+  "decided": {},
+  "proposals": ["monthlyBudgetUsd", "jobCapUsdByDepartment.engineering", "jobCapUsdByDepartment.security-data", "jobCapUsdByDepartment.product-design", "jobCapUsdByDepartment.sales-marketing", "jobCapUsdByDepartment.customer-success"],
+  "syntheticDataOnly": true,
+  "runChecks": { "test": ["pnpm", "test"], "lint": ["pnpm", "lint"], "typecheck": ["pnpm", "typecheck"], "format": ["pnpm", "format:check"] },
+  "runChecksNote": "As RESTRUCTURE.md §5.4 lists them; nothing runs them in R1.",
+  "readOnlyApi": null,
+  "policy": {},
+  "dataDir": "products/emty-inbox/",
+  "ownerApprovalRequired": true
+}

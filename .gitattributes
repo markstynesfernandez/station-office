@@ -1,0 +1,32 @@
+# Line endings: every text file is stored and checked out with LF, whatever core.autocrlf says on the machine.
+* text=auto eol=lf
+
+# Binary: never normalised, never diffed as text.
+*.png binary
+*.jpg binary
+*.jpeg binary
+*.gif binary
+*.webp binary
+*.ico binary
+*.bmp binary
+*.avif binary
+*.hdr binary
+*.exr binary
+*.ktx2 binary
+*.glb binary
+*.bin binary
+*.webm binary
+*.mp4 binary
+*.mov binary
+*.wav binary
+*.mp3 binary
+*.ogg binary
+*.woff binary
+*.woff2 binary
+*.ttf binary
+*.otf binary
+*.zip binary
+*.gz binary
+*.pdf binary
+*.sqlite binary
+*.db binary

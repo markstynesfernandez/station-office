@@ -1,0 +1,31 @@
+{
+  "$comment": "The research line (ENGINE-PLAN.md §3.1). Started by a research routine or from the task box. There is no folder trigger: a brief file never starts anything by itself. A brief that passes the checks is copied to research/briefs/ (verified); one that fails goes to research/rejected/ with the reasons. E7a (owner decision 1, 19/10/2026; DECISIONS.md 'E7a'): no Etsy data until Etsy authorises it in writing. DEMAND-RESEARCHER writes indicative briefs (origin research, lib/scout-brief.mjs: non-Etsy web search results, validated on write); `returnedSources` gives EVIDENCE-CHECKER the URLs and prices this job's web calls returned, the only ones a brief may cite, as on the genre-scout line.",
+  "id": "research",
+  "label": "Research",
+  "maxConcurrentJobs": 1,
+  "maxHops": 4,
+  "start": "demand-researcher",
+  "kind": "research",
+  "steps": {
+    "demand-researcher": {
+      "kind": "agent",
+      "agent": "demand-researcher",
+      "column": "brief",
+      "next": "evidence-checker"
+    },
+    "evidence-checker": {
+      "kind": "agent",
+      "agent": "evidence-checker",
+      "returnedSources": true,
+      "column": "brief",
+      "next": "brief-check"
+    },
+    "brief-check": {
+      "kind": "mechanical",
+      "fn": "briefCheck",
+      "column": "brief",
+      "next": null,
+      "end": "research-done"
+    }
+  }
+}

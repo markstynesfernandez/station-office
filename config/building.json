@@ -1,0 +1,4 @@
+{
+  "$comment": "B0 (owner, 21/10/2026): the building rules every business inherits (DECISIONS.md 'B0: building rules'). What code can enforce is enforced from here and from config/businesses: outbound actions (allowedOutbound + the owner's click), spend caps per run, job, business and station (guard.mjs), every agent output a draft until the owner approves it (ownerApprovalRequired, which cannot be false; the approval queue), originality and IP checks on anything published (unchanged), and no other company's data in the Station: an agent's file write or an owner brief that holds one of foreignDataMarkers (case-insensitive) is refused. The markers name companies whose data must never enter the Station; add a marker here, never a person's details.",
+  "foreignDataMarkers": ["examplecompany", "example company"]
+}

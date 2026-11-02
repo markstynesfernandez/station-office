@@ -1,0 +1,12 @@
+{
+  "$comment": "R1 (RESTRUCTURE.md §1.1, §1.2): the penthouse, floor 6. The owner's office (the requests queue, the autonomy policy log, the COO's daily report, the CEO's memos), the executive suite and Compliance; Finance is a ledger calculation shown here, not an agent. `floor` is display order only: no record carries a floor. `rooms` are today's 3D rooms (config/office.json) this department uses until R7 draws the seven floors. The execs and COMPLIANCE report to the owner (each agent's reportsTo); COMPLIANCE must (locked, src/engine/locked.mjs).",
+  "id": "hq",
+  "name": "Penthouse: Headquarters",
+  "floor": "6",
+  "reportsTo": "owner",
+  "status": "active",
+  "agents": ["ceo", "cto", "coo", "compliance", "overseer"],
+  "lines": ["coo-report", "ceo-memo"],
+  "rooms": ["finance", "compliance", "overseer"],
+  "lounge": true
+}

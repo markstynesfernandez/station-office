@@ -1,0 +1,90 @@
+{
+  "$comment": "The written Room 1 line (ENGINE-PLAN.md §3; PORTABILITY gap 9). Steps run in order from `start`; agent steps run one agent, mechanical steps run station code (no model, no cost, fail closed). Loop numbers carried over from the legacy routing plan: design max 2 sends back (3 reviews), listing max 1. Owner Q4 (16/10/2026): an exhausted listing loop goes to REJECTS-DESK. One job at a time (Q12).",
+  "id": "room1-digital",
+  "label": "Room 1 · digital",
+  "maxConcurrentJobs": 1,
+  "maxHops": 12,
+  "start": "intake",
+  "steps": {
+    "intake": {
+      "kind": "mechanical",
+      "fn": "intake",
+      "column": "brief",
+      "next": "designer"
+    },
+    "designer": {
+      "kind": "agent",
+      "agent": "designer",
+      "column": "design",
+      "next": "prep"
+    },
+    "prep": {
+      "kind": "mechanical",
+      "fn": "prep",
+      "column": "design",
+      "next": "qa-design",
+      "onFail": {
+        "back": "designer",
+        "max": 1
+      }
+    },
+    "qa-design": {
+      "kind": "agent",
+      "agent": "qa-design",
+      "column": "qa-design",
+      "verdict": "design",
+      "onApproved": "lister",
+      "onRevise": {
+        "loop": "design",
+        "back": "designer",
+        "max": 2,
+        "escalate": "rejects-desk"
+      }
+    },
+    "lister": {
+      "kind": "agent",
+      "agent": "lister",
+      "column": "listing",
+      "next": "price-fill"
+    },
+    "price-fill": {
+      "kind": "mechanical",
+      "fn": "priceFill",
+      "column": "listing",
+      "next": "qa-listing"
+    },
+    "qa-listing": {
+      "kind": "agent",
+      "agent": "qa-listing",
+      "column": "qa-listing",
+      "verdict": "listing",
+      "onApproved": "package-gate",
+      "onRevise": {
+        "loop": "listing",
+        "back": "lister",
+        "max": 1,
+        "escalate": "rejects-desk"
+      }
+    },
+    "package-gate": {
+      "kind": "mechanical",
+      "fn": "packageGate",
+      "column": "qa-listing",
+      "next": "package"
+    },
+    "package": {
+      "kind": "mechanical",
+      "fn": "package",
+      "column": "approval-queue",
+      "next": null,
+      "end": "approval"
+    },
+    "rejects-desk": {
+      "kind": "agent",
+      "agent": "rejects-desk",
+      "column": "rejected",
+      "next": null,
+      "end": "rejected"
+    }
+  }
+}

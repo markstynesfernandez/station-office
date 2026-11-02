@@ -1,0 +1,37 @@
+{
+  "$comment": "Routines the station ships with (engine.mjs seedRoutines). Each is inserted once per data root, ALWAYS disabled: enabling it in the office is the owner's approval (ENGINE-PLAN.md §5.4). A seed the owner deletes stays deleted. Real runs come after E6 (no provider keys until then). productKey (owner, 17/10/2026): the product key a research routine's job runs for, as data (engine.mjs runRoutine); the input text never names a product.",
+  "$r1Comment": "R1 (RESTRUCTURE.md §8 R1): the COO's daily operations report is seeded here, disabled like every seed; its target agent:coo skips while the COO is not hired, and it cannot be armed until R3. The weekly genre scout belongs to the archived Etsy line: it stays for the record and cannot be armed. scheduleNote: the hour is a proposal; the owner sets it when the COO is hired.",
+  "$r3Comment": "R3 (RESTRUCTURE.md §8 R3): the COO and the CEO are hired; the COO's routine can now be armed (its target agent:coo runs the coo-report line) and the CEO's weekly memo is seeded beside it, disabled like every seed. Arming either is the owner's, behind the spend confirmation; each firing is held to the HQ job cap (USD 0.50) and the agent's run cap. A data root seeded before R3 gets the CEO's seed at its next start; the COO's existing row is not changed.",
+  "routines": [
+    {
+      "id": "rt_seed_weekly-genre-scout",
+      "name": "Weekly genre scout",
+      "target": "line:genre-scout",
+      "schedule": "0 9 * * 1",
+      "maxRunsPerDay": 1,
+      "perRunCapUsd": null,
+      "productKey": "pngtuber-prop-pack",
+      "input": "Scout this week's genres: 2 currently popular AAA titles and 2 indie titles with active streaming communities, from trend articles, editorial roundups and community discussion. Write the internal notes and 4 genre briefs for the product_key in this run input."
+    },
+    {
+      "id": "rt_seed_coo-daily-report",
+      "name": "COO daily operations report",
+      "target": "agent:coo",
+      "schedule": "0 8 * * *",
+      "scheduleNote": "proposal: 08:00 Dublin every day; the owner sets the hour in R3",
+      "maxRunsPerDay": 1,
+      "perRunCapUsd": null,
+      "input": "Write the daily operations report from the metrics the engine wrote for today: spend per product and department, caps, routines health, blocked and stuck jobs, open requests, policy changes, compliance refusals."
+    },
+    {
+      "id": "rt_seed_ceo-weekly-memo",
+      "name": "CEO weekly memo",
+      "target": "agent:ceo",
+      "schedule": "0 9 * * 1",
+      "scheduleNote": "proposal (R3): 09:00 Dublin on Mondays, after the COO's 08:00 report; the owner sets the hour",
+      "maxRunsPerDay": 1,
+      "perRunCapUsd": null,
+      "input": "Write this week's priorities memo and proposals from the inputs the engine wrote: Finance, the COO's reports of the week, Engineering, and the owner's marks on earlier proposals."
+    }
+  ]
+}

@@ -1,0 +1,29 @@
+{
+  "$comment": "R2 (owner's go, 25/10/2026; RESTRUCTURE.md §2.2, §8 R2): hired for the engineering line on ReplyDesk (src/engine/engineering.mjs). Model, effort and thinking are the owner's (R0.2, R0.3); every limit here is a proposal (§2.2 \"Limits (proposed)\"; maxOutputTokens set at hiring, R2).",
+  "key": "security",
+  "name": "SECURITY",
+  "department": "security-data",
+  "status": "active",
+  "phase": "R2",
+  "tier": "strong",
+  "effort": "medium",
+  "thinking": "off",
+  "tools": [
+    "fs_read",
+    "fs_list",
+    "code_search",
+    "submit_verdict"
+  ],
+  "limits": {
+    "maxTurns": 30,
+    "runCapUsd": 0.3,
+    "maxOutputTokens": 6000
+  },
+  "proposals": [
+    "limits"
+  ],
+  "enabled": true,
+  "role": "Audits diffs and dependencies for vulnerabilities and secrets before the owner sees a merge request; read only.",
+  "verdict": "security",
+  "hired": "R2"
+}

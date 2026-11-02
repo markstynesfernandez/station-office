@@ -1,0 +1,11 @@
+{
+  "$comment": "R1: floor 5. Security desk (diff and dependency audits, read only), data desk (aggregates only). Reports to the CTO.",
+  "id": "security-data",
+  "name": "Security & Data",
+  "floor": "5",
+  "reportsTo": "cto",
+  "status": "active",
+  "agents": ["security", "analyst"],
+  "lines": [],
+  "rooms": []
+}

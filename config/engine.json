@@ -1,0 +1,144 @@
+{
+  "$comment": "Engine settings (ENGINE-PLAN.md §1.2). Caps and prices live here only (DECISIONS.md Q7): never raise a cap without the owner. Prices verified by the owner 17/10/2026 (DECISIONS.md 'E6 readiness: owner decisions'); each entry names its source and date.",
+  "timezone": "Europe/Dublin",
+  "provider": "mock",
+  "$tiersComment": "tiers.*.forcedToolChoice (OWNER D3, finding 17/10/2026, claude-api skill): forced tool_choice (any / tool) returns a 400 on Claude Sonnet 5.5 (also Opus 5.5 and Fable 5.1) whatever the thinking setting: a model restriction, not a thinking one. Claude Haiku 5.5 accepts it, with thinking on or off. So cheap (Haiku) forces the nudge's tool call and strong (Sonnet) sends auto with the instruction in the message.",
+  "tiers": {
+    "cheap": { "model": "claude-haiku-5-5", "provider": "anthropic", "forcedToolChoice": true },
+    "strong": { "model": "claude-sonnet-5-5", "provider": "anthropic", "forcedToolChoice": false }
+  },
+  "effortLevels": ["low", "medium", "high"],
+  "thinking": {
+    "$comment": "OWNER D2 17/10/2026 (DECISIONS.md 'E6 step c0'): each agent's config/agents/<key>.json says thinking \"off\" or \"default\"; \"off\" for every agent in the first full live run, to be turned on per agent later. \"off\" is sent as the request's thinking field from `off` below, per model (claude-api skill, read 17/10/2026): Claude Haiku 5.5 accepts {type: disabled} at effort low, medium or high; Claude Sonnet 5.5 returns a 400 for {type: disabled}, and its lowest setting is {type: between_tools} (no extended thinking; effort high or below; no other field in thinking). \"default\" sends no thinking field (the model's default: adaptive). A model with no entry here refuses an \"off\" agent before any call.",
+    "off": {
+      "claude-haiku-5-5": { "type": "disabled" },
+      "claude-sonnet-5-5": { "type": "between_tools" }
+    }
+  },
+  "vision": {
+    "$comment": "E6 c0: image_analyze is priced as vision tokens on the Anthropic text model (owner row 20). Per the vision docs (read 17/10/2026): an image costs ceil(width/28) x ceil(height/28) visual tokens; an image over the model's long-edge or visual-token limit is downscaled first (aspect kept), which caps the cost. Claude 4.7 and later models (Haiku 5.5, Sonnet 5.5) are in the high-resolution tier: 2576 px long edge, 4784 visual tokens. The reservation uses the image's own pixel size (lib/vision.mjs); the settle is the response's usage.",
+    "source": "https://platform.claude.com/docs/en/build-with-claude/vision",
+    "read": "17/10/2026",
+    "patchPx": 28,
+    "models": {
+      "claude-haiku-5-5": { "maxLongEdgePx": 2576, "maxVisualTokens": 4784 },
+      "claude-sonnet-5-5": { "maxLongEdgePx": 2576, "maxVisualTokens": 4784 }
+    }
+  },
+  "image": {
+    "$comment": "Only openai/gpt-5-image-mini may run (owner 17/10/2026). The opaque model stays disabled by the owner's decision (opaqueModelApproved false), so opaque images are refused. E6 c0: the live client is providers/openrouter.mjs (OpenRouter chat completions with modalities image+text, the legacy route); timeoutMs is per HTTP attempt; retries and backoff are live.retries/backoffMs/backoffMaxMs (approved defaults), every attempt reserved again. maxImageBytes refuses a larger returned image. Engine settings, not caps.",
+    "provider": "openrouter",
+    "allowedModels": ["openai/gpt-5-image-mini"],
+    "opaqueModelApproved": false,
+    "opaqueModel": "google/gemini-3.1-flash-image",
+    "source": "station.config.json imagePolicy (owner OpenRouter guardrail 15/10/2026)",
+    "endpoint": "https://openrouter.ai/api/v1/chat/completions",
+    "generationEndpoint": "https://openrouter.ai/api/v1/generation",
+    "generationEndpointNote": "E6 wrap-up (18/10/2026): OpenRouter's record of one generation (GET ?id=gen-..., docs read 18/10/2026), read by npm run settle:images to settle estimated image rows; no image and no model call",
+    "timeoutMs": 180000,
+    "maxImageBytes": 16777216
+  },
+  "upscale": {
+    "$comment": "OWNER DECISION 17/10/2026: local Real-ESRGAN may run as a child process (src/engine/lib/esrgan.mjs only): this pinned copy, no network, inside the job jail, killed by the E-STOP. Copied from the legacy station's download (realesrgan-ncnn-vulkan v0.2.5.0 build 20220424, model realesrgan-x4plus; github.com/xinntao/Real-ESRGAN releases) and sha256-identical to it. Licences in ASSETS.md. tools/ is git-ignored: the binary is never committed. Method, model, scale and alpha method come from station.config.json upscale (they are part of the build key).",
+    "binary": "tools/realesrgan/realesrgan-ncnn-vulkan.exe",
+    "sha256": "07e49f7cbb4ede01ae4dd4c399d3a7e5846e3d2085c3128eff881e55cb7b1a0c",
+    "files": {
+      "vcomp140.dll": "8f72ef2e483465444b2059fc6744d6cb22cd8d8a27f6fa56befd2a42dcd0f78b",
+      "models/realesrgan-x4plus.param": "35330ececcea33b6c397a72548e788d5d53becee4734c50b7fada36e89f10a86",
+      "models/realesrgan-x4plus.bin": "713ee713b0353afaa27976f0563a64a5043bd70b9bd8936c2e26e25ebcdbcddf"
+    }
+  },
+  "pricing": {
+    "anthropic": {
+      "$comment": "USD per million tokens. cacheWritePerM is the 5-minute cache write. longPrompt: a request whose prompt (input + cache writes + cache reads) is over overTokens pays those prices for the whole request, output included (guard.mjs priceTier).",
+      "models": {
+        "claude-haiku-5-5": { "inPerM": 0.1, "outPerM": 0.5, "cacheReadPerM": 0.01, "cacheWritePerM": 0.125, "longPrompt": { "overTokens": 100000, "inPerM": 0.5, "outPerM": 2.5, "cacheReadPerM": 0.05, "cacheWritePerM": 0.625 }, "source": "https://platform.claude.com/docs/en/about-claude/pricing", "verified": "owner, 17/10/2026" },
+        "claude-sonnet-5-5": { "inPerM": 2, "outPerM": 10, "cacheReadPerM": 0.1, "cacheWritePerM": 2.5, "source": "https://platform.claude.com/docs/en/about-claude/pricing", "verified": "owner, 17/10/2026" }
+      }
+    },
+    "anthropic-web": {
+      "$comment": "Anthropic server-side web tools (Q6): web search USD 0.01 per search plus tokens, web fetch tokens only. perCall is the per-call fee; the tokens are priced at the text model's rates on the Anthropic call that carries the results.",
+      "models": {
+        "web_search": { "perCall": 0.01, "plusTokens": true, "source": "https://platform.claude.com/docs/en/about-claude/pricing", "verified": "owner, 17/10/2026" },
+        "web_fetch": { "perCall": 0, "plusTokens": true, "source": "https://platform.claude.com/docs/en/about-claude/pricing", "verified": "owner, 17/10/2026" }
+      }
+    },
+    "openrouter": {
+      "models": {
+        "openai/gpt-5-image-mini": { "perImage": 0.08, "estimated": true, "source": "owner, 17/10/2026: token-priced on OpenRouter, so perImage is the guard's reservation; each call settles to the cost OpenRouter reports for it, marked estimated if none is reported (tools/index.mjs image_generate)", "verified": "owner, 17/10/2026" }
+      }
+    },
+    "mock": {
+      "models": { "*": { "inPerM": 0, "outPerM": 0, "perImage": 0, "perCall": 0, "source": "mock provider: no model is called" } }
+    }
+  },
+  "caps": {
+    "$comment": "Owner, 21/10/2026 (W4): USD 7.00 per job for every job (was USD 6.00, W2), so a design job that has reworked its set can still reach the approval queue; the research line stays at USD 1.00 and genre-scout at USD 0.50, and the day cap stays at USD 10.00 (a design job plus a research job is 7.00 + 1.00 = 8.00 worst case). Owner, 21/10/2026 (L3.1): USD 1.00 per research-line job (perJobUsdByLine.research; a research job has cost about USD 0.11), so the weekday research routine can start beside an open design job (then 6.00 + 1.00 = 7.00 worst case), within the USD 10.00 day cap. A line cap only lowers the job cap, never raises it. Owner, 20/10/2026 (W2): USD 6.00 per job for every job, images included (was USD 5.00, owner 17/10/2026, Q2): text is now paid from the Team plan's API credits, and image spend stays bounded by the OpenRouter key's USD 2 a day. Owner, 17/10/2026 (Q2): USD 10.00 per day, USD 10.00 per line per day, USD 0.50 per scout run (a genre-scout run is one research job: perJobUsdByLine). perRunUsd (one agent run): USD 2.00, owner-approved 17/10/2026 (owner spend rule; was 1.00, carried over from the StarNet era; DECISIONS.md 'E6 step c0: owner decisions, part 2'). Outer limits the owner sets outside the engine: the Anthropic Console monthly workspace limit and the OpenRouter key limit of USD 2 a day. per-agent 0 = off, 12 hops. imagesPerDay 0 = no count cap (image spend still counts in every USD cap).",
+    "perRunUsd": 2,
+    "perJobUsd": 7,
+    "perJobUsdByLine": { "genre-scout": 0.5, "research": 1 },
+    "perDayUsd": 10,
+    "perLineDayUsd": { "default": 10 },
+    "perAgentDayUsd": { "default": 0 },
+    "imagesPerDay": 0,
+    "maxHops": 12
+  },
+  "live": {
+    "$comment": "E6 a0: the live Anthropic text provider (providers/anthropic.mjs). timeoutMs is per HTTP attempt. retries: further attempts after a 429, a 5xx or a network error, each reserved again through the guard; 400/401/403 are never retried. Wait between attempts: backoffMs x 2^attempt, capped at backoffMaxMs (a server retry-after is used when given, within the cap). Not caps: engine settings, approved by the owner as set 17/10/2026 (DECISIONS.md 'E6 step a0 build record').",
+    "timeoutMs": 300000,
+    "retries": 2,
+    "backoffMs": 2000,
+    "backoffMaxMs": 30000,
+    "web": {
+      "$comment": "E6 b0: the live web backend (providers/anthropic-web.mjs). Each web_search / web_fetch tool call is ONE Anthropic request on `model` with ONE server tool: the basic, directly called versions in `tools` (per the claude-api reference and platform docs 17/10/2026; the dynamic-filtering versions run code execution, one more tool, and are not used). max_uses per request = maxUsesPerRequest, lowered to the run's remaining web calls; the run's web-call cap (agent maxWebCalls) is counted across requests. Reservation: max_uses x the per-call fee (pricing.anthropic-web) + the prompt estimate and resultTokensPerUse x max_uses at the model's dearest input price + maxTokens output. Settle: web_search_requests x 0.01 + the response's tokens at the model's prices. fetchMaxContentTokens caps a fetched page. No domain allow/block list: none is set (owner). effort: the relay's output_config.effort. Engine settings, not caps (set 17/10/2026, for the owner's approval).",
+      "model": "claude-haiku-5-5",
+      "effort": "low",
+      "maxTokens": 2000,
+      "maxUsesPerRequest": 1,
+      "tools": { "web_search": "web_search_20250305", "web_fetch": "web_fetch_20250910" },
+      "resultTokensPerUse": { "web_search": 20000, "web_fetch": 12000 },
+      "fetchMaxContentTokens": 10000
+    }
+  },
+  "webSources": {
+    "$comment": "OWNER DECISION 17/10/2026 (DECISIONS.md 'E6 readiness' item 1 and 'E6 step b0: owner decisions'): v1 scout sources are trend articles, editorial roundups and community discussion found by web search. Store chart, browse and streaming pages are out: Steam, itch.io, Twitch, YouTube, written as bare domains (the API includes subdomains, e.g. store.steampowered.com, any itch.io page, www.twitch.tv, m.youtube.com, and rejects wildcards such as '*.itch.io'). Sent as blocked_domains on BOTH web_search and web_fetch for every agent with web tools (one shared relay), and the engine refuses a web_fetch to these hosts before anything is reserved or sent (lib/web-sources.mjs). Add nothing without the owner. Twitch and YouTube data come later through their official APIs only.",
+    "$etsyComment": "OWNER DECISION 1, 19/10/2026 (DECISIONS.md 'E7a'): no Etsy data in the scout or the research line until Etsy authorises it in writing (Etsy API Terms of Use section 5, last updated 18/08/2026: no automated analysis of Etsy listings, and no requests for Etsy content for analytics, without Etsy's written authorisation). etsy.com is in blockedDomains, so it is sent as blocked_domains on web_search AND web_fetch for every agent (no Etsy result comes back) and the engine refuses a fetch to it before anything is reserved or sent; fetchRefusedDomains keeps etsy.com too (the engine-side refusal; owner: keep it).",
+    "blockedDomains": ["steampowered.com", "itch.io", "twitch.tv", "youtube.com", "etsy.com"],
+    "$fetchComment": "OWNER DECISION D1, 17/10/2026 (DECISIONS.md 'E6 step b2: owner decisions'): agents never fetch etsy.com pages (Etsy's terms restrict automated reads). The engine refuses a web_fetch to these hosts or any subdomain before anything is reserved or sent, like blockedDomains, but they are NOT sent to the API as blocked_domains, so their results would still come back from web_search. Since 19/10/2026 etsy.com is in blockedDomains as well (above), so no Etsy result comes back at all; demand evidence is 'indicative' (non-Etsy sources) and the competitor count 'not measured'.",
+    "fetchRefusedDomains": ["etsy.com"]
+  },
+  "runtime": {
+    "resumeOnRestart": 1,
+    "maxConcurrentJobsPerLine": 1,
+    "$maxRunningJobsComment": "L2 (19/10/2026): at most this many jobs run at once on a Station instance started by npm start (live and dev), across every line; a further start waits in the queue as \"next\" and starts when a running job ends. Demo, dry runs and the line scripts are not limited by it (one job per line still applies everywhere). An engine setting, not a cap. L3 (owner, 20/10/2026): 2, so two lines run side by side; each line still runs at most 1 job (config/lines/*.json maxConcurrentJobs), and a start on a line whose job is running waits as next for that line. Every spend check counts every running and queued job together (spend.mjs startCheck, guard.mjs).",
+    "maxRunningJobs": 2,
+    "$confirmComment": "L2: every page action that can spend needs a confirm token from POST /api/spend/quote (single use, bound to the action and its parameters, valid confirmTtlMs).",
+    "confirmTtlMs": 600000,
+    "maxReadBytes": 200000,
+    "promptCaching": true
+  },
+  "etsy": {
+    "$comment": "E7a (owner decisions 2 and 3, 19/10/2026; DECISIONS.md 'E7a'): the own-shop Etsy connection (providers/etsy.mjs). Seller App use for own-shop management only: OAuth 2.0 authorization code with PKCE (S256) for the owner's shop, READ scopes only, reading only the owner's own shop and its active listings to confirm the connection and list them with their ids on the Station page. No listing search, no other shop, no write. Sources read 19/10/2026: developers.etsy.com (Authentication, Request Standards, Rate Limits, Quick Start) and Etsy's Dev MCP server (getMe, getShop, getListingsByShop, tokenScopes, ping); the API Terms of Use (last updated 18/08/2026) for the cache limits and the notice. getMe needs shops_r; getListingsByShop needs listings_r; getShop needs the API key only. The redirect URI must match the one registered in the Etsy app exactly and start with https://; nothing listens there: after approving, the owner pastes the browser's address into the Station page (ETSY_REDIRECT_URI in .env overrides it). Tokens: access 1 hour, refresh 90 days (docs), stored encrypted (AES-256-GCM, key from ETSY_TOKEN_KEY by scrypt) in <data root>/etsy/. Rate limits: Etsy publishes none by default (each app's are in its Developer Portal), so the client stays at or under perSecond / perDay here, honours Retry-After on a 429 and backs off (backoffMs x 2^attempt, at most backoffMaxMs). Cache (Terms section 5 'Display of Data': listing content at most 6 hours old, other content at most 24 hours, kept no longer than needed): in memory only, listings at most listingsTtlMs, the shop at most shopTtlMs; the client refuses a config above 6 h / 24 h. Engine settings, not caps (USD 0: the API has no charge; one ledger row per call, kind etsy).",
+    "apiBase": "https://api.etsy.com/v3",
+    "authorizeUrl": "https://www.etsy.com/oauth/connect",
+    "tokenUrl": "https://api.etsy.com/v3/public/oauth/token",
+    "redirectUri": "https://localhost/station/etsy-callback",
+    "scopes": ["shops_r", "listings_r"],
+    "perSecond": 2,
+    "perDay": 1000,
+    "retries": 3,
+    "backoffMs": 1000,
+    "backoffMaxMs": 30000,
+    "timeoutMs": 20000,
+    "connectTtlMs": 600000,
+    "listingsTtlMs": 3600000,
+    "shopTtlMs": 21600000,
+    "listingsLimit": 25,
+    "notice": "The term 'Etsy' is a trademark of Etsy, Inc. This Application uses Etsy's API, but is not endorsed or certified by Etsy."
+  },
+  "outerLimits": {
+    "$comment": "L2: limits the owner sets OUTSIDE the engine, shown in the spend confirmation; never caps (the engine's caps are under caps). L3 (owner, 20/10/2026): both are counted with every running and queued job together: the dialog refuses a start whose Console worst case (this month's Anthropic rows + every open job's worst case + this one) would pass anthropicConsoleMonthlyUsd, and the guard refuses an image call that would take every job's OpenRouter spend of the day (UTC day and Dublin day, the higher) plus the reservations in flight over openrouterDailyUsd; neither limit is changed here. anthropicConsoleMonthlyUsd: the Anthropic Console's monthly limit for the station workspace in USD (owner, 20/10/2026: USD 200, raised from USD 100; the org limit is USD 350, also raised by the owner on 20/10/2026), null = not configured; the dialog shows the limit less this Dublin month's Anthropic rows in the station ledger, labelled 'estimate from the station ledger; the Console is the authority'. openrouterDailyUsd: the OpenRouter key limit (owner, 17/10/2026).",
+    "anthropicConsoleMonthlyUsd": 200,
+    "openrouterDailyUsd": 2
+  }
+}

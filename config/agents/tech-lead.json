@@ -1,0 +1,30 @@
+{
+  "$comment": "R2 (owner's go, 25/10/2026; RESTRUCTURE.md §2.2, §8 R2): hired for the engineering line on ReplyDesk (src/engine/engineering.mjs). Model, effort and thinking are the owner's (R0.2, R0.3); every limit here is a proposal (§2.2 \"Limits (proposed)\"; maxOutputTokens set at hiring, R2).",
+  "key": "tech-lead",
+  "name": "TECH-LEAD",
+  "department": "engineering",
+  "status": "active",
+  "phase": "R2",
+  "tier": "strong",
+  "effort": "medium",
+  "thinking": "off",
+  "tools": [
+    "fs_read",
+    "fs_list",
+    "fs_write",
+    "code_search"
+  ],
+  "limits": {
+    "maxTurns": 30,
+    "maxOutputTokens": 8000
+  },
+  "proposals": [
+    "limits"
+  ],
+  "enabled": true,
+  "role": "Turns an approved issue into a spec with testable acceptance criteria and a test plan.",
+  "writes": [
+    "spec.md"
+  ],
+  "hired": "R2"
+}

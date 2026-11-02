@@ -1,0 +1,33 @@
+{
+  "$comment": "R3 (owner's go, 30/10/2026; RESTRUCTURE.md §2.1, §2.2, §2.3, §8 R3): hired for the daily operations report (src/engine/execs.mjs, line coo-report). Replaces OVERSEER (retired into it). Pause only, locked in code (src/engine/locked.mjs coo-pause-only): its tools are fs_read, fs_list, fs_write in products/station/reports and line_pause, which pauses a line only for a breach the day's metrics list; it never resumes a line and never changes a cap or budget. Model, effort and thinking are the owner's (R0.2, R0.3: Sonnet, low, off); every limit here is a proposal (§2.2 \"Limits (proposed)\"; maxOutputTokens set at hiring, R3).",
+  "key": "coo",
+  "name": "COO",
+  "department": "hq",
+  "reportsTo": "owner",
+  "status": "active",
+  "phase": "R3",
+  "tier": "strong",
+  "effort": "low",
+  "thinking": "off",
+  "tools": [
+    "fs_read",
+    "fs_list",
+    "fs_write",
+    "line_pause"
+  ],
+  "folder": "products/station/reports",
+  "writes": [
+    "*.md"
+  ],
+  "limits": {
+    "maxTurns": 20,
+    "runCapUsd": 0.2,
+    "maxOutputTokens": 4000
+  },
+  "proposals": [
+    "limits"
+  ],
+  "enabled": true,
+  "role": "Daily operations report, budget and routine watch, stuck-job triage; may pause a line on a breach, never raise a cap (locked). Replaces OVERSEER.",
+  "hired": "R3"
+}

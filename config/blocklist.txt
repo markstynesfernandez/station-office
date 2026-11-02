@@ -1,0 +1,27 @@
+# Deterministic backstop for collect-outbox: case-insensitive whole-word/phrase matches in title, tags,
+# description or alt text BLOCK the package. This is NOT the IP check (QA is) — it only catches obvious
+# slips. One term per line. Owner extends freely.
+in the style of
+inspired by
+dupe
+parody
+official
+licensed
+trademark
+handmade
+hand-drawn
+hand drawn
+hand-painted
+hand painted
+disney
+marvel
+pixar
+nintendo
+pokemon
+star wars
+harry potter
+taylor swift
+nfl
+nba
+fifa
+premier league

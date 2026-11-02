@@ -1,0 +1,28 @@
+{
+  "$comment": "R3 (RESTRUCTURE.md §2.1, §8 R3): the COO's daily operations report on the Station itself (src/engine/execs.mjs). The engine writes the day's metrics (reports/metrics-<day>.json), then one COO run writes reports/<day>.md, checked on write: the sections, and every USD figure taken from the metrics. The COO may pause a line with line_pause, only for a breach the metrics list (locked rule coo-pause-only). Started by the owner on the page (spend confirmation) or by the routine rt_seed_coo-daily-report once the owner arms it.",
+  "id": "coo-report",
+  "label": "COO daily report",
+  "kind": "exec-report",
+  "products": [
+    "station"
+  ],
+  "maxConcurrentJobs": 1,
+  "estimateUsd": {
+    "note": "the plan's estimate, not a measurement (RESTRUCTURE.md §8 R3: one COO report, about 25k tokens in and 2k out, Sonnet)",
+    "job": 0.07
+  },
+  "start": "metrics",
+  "steps": {
+    "metrics": {
+      "kind": "mechanical",
+      "fn": "metrics",
+      "next": "coo"
+    },
+    "coo": {
+      "kind": "agent",
+      "agent": "coo",
+      "column": "report",
+      "next": null
+    }
+  }
+}

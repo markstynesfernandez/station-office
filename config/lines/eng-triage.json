@@ -1,0 +1,29 @@
+{
+  "$comment": "R2: the CTO orders a product's owner-approved issues into backlog/dev-queue.json (checked on write: owner-approved issues only). One CTO run; started by the owner on the page, behind the spend confirmation.",
+  "id": "eng-triage",
+  "label": "CTO triage",
+  "kind": "eng-triage",
+  "products": [
+    "replydesk"
+  ],
+  "maxConcurrentJobs": 1,
+  "estimateUsd": {
+    "note": "the plan's estimate, not a measurement (RESTRUCTURE.md §8 R2: one CTO triage, about 40k tokens in and 3k out)",
+    "job": 0.11
+  },
+  "borrows": [
+    "cto"
+  ],
+  "start": "cto-triage",
+  "steps": {
+    "cto-triage": {
+      "kind": "agent",
+      "agent": "cto",
+      "writes": [
+        "dev-queue.json"
+      ],
+      "column": "triage",
+      "next": null
+    }
+  }
+}

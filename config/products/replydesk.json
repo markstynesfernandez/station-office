@@ -1,0 +1,22 @@
+{
+  "$comment": "R1 (RESTRUCTURE.md §1.3, §8 R1): a product owns its budget, repo, data, roadmap and policy overrides; departments work on many products. Every job, run, routine, request, ledger row and event carries product_id and department_id. Figures marked in `proposals` are proposals awaiting the owner (RESTRUCTURE.md §9.2 item 3); the rest are owner decisions with their source in `decided`. A product's `policy` may only make an action stricter than config/autonomy.json (auto < owner < forbidden): a looser override stops the engine.",
+  "id": "replydesk",
+  "name": "ReplyDesk",
+  "status": "active",
+  "phase": "R2",
+  "repo": "markstynesfernandez/Review-Service",
+  "localRepoEnv": "REPLYDESK_REPO",
+  "repoSource": { "ref": "refs/remotes/origin/main", "$comment": "R2: the engine fetches ONLY this ref of the owner's clone (REPLYDESK_REPO) into data/products/replydesk/repo.git as main: no outreach/* branch (prospects' personal data, REPLYDESK.md) and no tag. The clone is only read." },
+  "monthlyBudgetUsd": 80,
+  "dailyCapUsd": null,
+  "jobCapUsdByDepartment": { "engineering": 3, "security-data": 0.5, "product-design": 0.5, "sales-marketing": 0.5, "customer-success": 0.5 },
+  "decided": { "monthlyBudgetUsd": "owner, R2 deploy prep (28/10/2026): USD 80, replacing USD 60 (owner, R0.3, 23/10/2026)", "jobCapUsdByDepartment.engineering": "owner, R0.3 (23/10/2026)" },
+  "proposals": ["jobCapUsdByDepartment.security-data", "jobCapUsdByDepartment.product-design", "jobCapUsdByDepartment.sales-marketing", "jobCapUsdByDepartment.customer-success"],
+  "runChecks": { "test": ["python", "-m", "pytest", "-q"] },
+  "runChecksNote": "R2: these run inside Docker with --network none, the worktree read-only (owner, R0.3; lib/checks.mjs); lint (ruff) is added once its R2 issue is merged by the owner and the check image rebuilt.",
+  "checkImage": { "base": "python:3.12-slim@sha256:a0f57064cbdcd6285fa45f51237ab0b35ea8ebaed06a1f5973e89e19dfb86704", "requirements": "requirements.txt", "$comment": "R2: the image the checks run in (lib/checks.mjs), built on the owner's command (npm run check-image -- replydesk) from requirements.txt at main; Python 3.12 as ReplyDesk's CI (.github/workflows/ci.yml) and render.yaml. R2a.1 (owner, 26/10/2026): the official python:3.12-slim pinned by digest (Python 3.12.15, Debian trixie-slim, the multi-platform index of 21/10/2026). requirements.txt has version ranges and no lockfile, so the build records pip freeze next to the image, and check-image warns when it differs from the lock below (the owner's record).", "lock": { "file": "replydesk.lock.txt", "sha256": "dde217f94f94e3cdf17054430c653a0f76c2236ebaa8b188b8ed6ca91c7eb539", "$comment": "R2a.1 (owner, 26/10/2026): the pip freeze of the first check image, station-check-replydesk:fc3eeeed826a3b0a (image sha256:1971201a3bf0…, built 26/10/2026 11:32 UTC from requirements.txt sha256 1c91e5fc… at d03a9ab); 38 packages. check-image checks this file against the sha256 and warns when a later build installs anything else. Changed only by the owner, in a commit." } },
+  "readOnlyApi": null,
+  "policy": {},
+  "dataDir": "products/replydesk/",
+  "ownerApprovalRequired": true
+}

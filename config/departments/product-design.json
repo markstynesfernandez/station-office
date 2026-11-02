@@ -1,0 +1,11 @@
+{
+  "$comment": "R1: floor 3. Roadmap wall per product, backlog board, design studio. Reports to the CEO.",
+  "id": "product-design",
+  "name": "Product & Design",
+  "floor": "3",
+  "reportsTo": "ceo",
+  "status": "active",
+  "agents": ["product-manager", "ux-designer"],
+  "lines": [],
+  "rooms": []
+}

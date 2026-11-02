@@ -1,0 +1,21 @@
+{
+  "$comment": "Demo pacing (npm run demo): the ONE place the scripted day's timing lives. Milliseconds at 1x; the 2x and 4x keys divide every wait. Each wait sits in front of a mock call (text turn, image, web call) or after a stage ends, so the real engine and its events set the order and these numbers set only the rhythm. Tuned for about 3 minutes in total at 1x.",
+  "speeds": [1, 2, 4],
+  "defaultSpeed": 1,
+  "startHoldMs": 4000,
+  "textTurnMs": {
+    "default": 2000,
+    "demand-researcher": 2900,
+    "evidence-checker": 2900,
+    "designer": 1800,
+    "qa-design": 2900,
+    "lister": 3000,
+    "qa-listing": 2900,
+    "rejects-desk": 2000
+  },
+  "imageMs": 1100,
+  "imageAnalyzeMs": 1600,
+  "webMs": 1800,
+  "stageHoldMs": 3000,
+  "endHoldMs": 6000
+}

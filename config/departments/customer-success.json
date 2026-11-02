@@ -1,0 +1,11 @@
+{
+  "$comment": "R1: floor 1. Onboarding, support desk, retention desk. Reports to the CEO. Nothing here runs before R6 (paying customers first).",
+  "id": "customer-success",
+  "name": "Customer Success",
+  "floor": "1",
+  "reportsTo": "ceo",
+  "status": "active",
+  "agents": ["onboarding-guide", "support-drafter", "retention-analyst"],
+  "lines": [],
+  "rooms": []
+}

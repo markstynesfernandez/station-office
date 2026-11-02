@@ -1,0 +1,33 @@
+{
+  "$comment": "Agent config (ENGINE-PLAN.md §2.1). Prompt: prompts/agents/demand-researcher.md (+ the skills its front-matter names). tier: config/engine.json tiers. The page may change enabled, tier and effort only.",
+  "key": "demand-researcher",
+  "name": "DEMAND-RESEARCHER",
+  "department": "RESEARCH",
+  "status": "archived",
+  "archived": true,
+  "archivedNote": "R1 (owner, 22/10/2026): Etsy production stops; archived, not deleted. The engine refuses to run it; its desk shows dimmed in the trophy room on G.",
+  "tier": "cheap",
+  "effort": "low",
+  "thinking": "off",
+  "thinkingNote": "owner D2 17/10/2026: off for the first full live run (config/engine.json thinking); set \"default\" to turn it on for this agent",
+  "tools": [
+    "fs_read",
+    "fs_list",
+    "fs_write",
+    "web_search",
+    "web_fetch"
+  ],
+  "folder": "research",
+  "writes": [
+    "drafts/*/*.md"
+  ],
+  "limits": {
+    "maxTurns": 40,
+    "maxOutputTokens": 8000,
+    "maxWebCalls": 12,
+    "maxImages": 0
+  },
+  "color": "#7bc88a",
+  "enabled": true,
+  "role": "Finds demand for digital products in non-Etsy sources (indicative evidence) and writes candidate briefs."
+}

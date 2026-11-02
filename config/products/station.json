@@ -1,0 +1,17 @@
+{
+  "$comment": "R1: the Station itself. HQ and station-wide records (B0's \"shared\"): exec memos and reports, the engine's own events, the COO's report. A job on HQ (department hq) belongs to this product. Its budget is a proposal (RESTRUCTURE.md §9.2 item 3). R1.1 (owner, 24/10/2026): an HQ job (one exec run: the CEO's memo, the COO's report) is capped at USD 0.50, a PROPOSAL, in place of the station's USD 7.00 job cap for HQ; the guard applies it now (it only lowers a cap) and the lower agent run caps still win (COO 0.20, CTO 0.30, COMPLIANCE 0.10, all proposals).",
+  "id": "station",
+  "name": "The Station",
+  "status": "active",
+  "phase": "R1",
+  "repo": "office-agents (this repository)",
+  "monthlyBudgetUsd": 20,
+  "dailyCapUsd": null,
+  "jobCapUsdByDepartment": { "hq": 0.5 },
+  "decided": {},
+  "proposals": ["monthlyBudgetUsd", "jobCapUsdByDepartment.hq"],
+  "readOnlyApi": null,
+  "policy": {},
+  "dataDir": "products/station/",
+  "ownerApprovalRequired": true
+}

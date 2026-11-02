@@ -1,0 +1,3 @@
+## SKILL: LISTING PRICE RULES — QA LISTING, DIGITAL (you check presence only)
+
+A station script fills the price and file fields and the package gate re-checks every value. You only check that these are PRESENT in listing.json, and never recompute, judge or edit a price: `priceSuggestion` (an object), `listingPriceEur`, `marginEstimate` (an object), `variantPricesEur` (a non-empty list), `deliverables` (a non-empty list), `delivery` ("automatic download") and `licence`. Missing fails. `priceSuggestion`, `marginEstimate` and `listingPriceEur` hold null where the brief has no sourced price: that is correct, not a failure.

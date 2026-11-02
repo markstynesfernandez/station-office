@@ -1,0 +1,12 @@
+{
+  "$comment": "R1: the ground floor's trophy room: the Etsy archive (owner, 22/10/2026: Etsy production stops). Archived: every start on its lines is refused with \"archived\", its routines cannot be armed, its agents cannot run; its history, packages, old approval queue, ledger and the read-only own-shop connection stay viewable. Its records keep business_id etsy-shop and carry product etsy-shop, department etsy. The lobby and the lounge are display areas on G, not a department.",
+  "id": "etsy",
+  "name": "Lobby: Etsy archive",
+  "floor": "G",
+  "reportsTo": "owner",
+  "status": "archived",
+  "agents": ["demand-researcher", "evidence-checker", "trend-scout", "designer", "qa-design", "lister", "qa-listing", "rejects-desk"],
+  "lines": ["research", "genre-scout", "room1-digital"],
+  "rooms": ["research", "design", "office"],
+  "product": "etsy-shop"
+}

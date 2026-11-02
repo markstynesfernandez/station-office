@@ -1,0 +1,11 @@
+{
+  "$comment": "R1: floor 4. Tech-lead desk, development bay, review desk, test bench; a CI wall per product (R7). Reports to the CTO. R2: the engineering line and the CTO's triage line; both borrow the CTO (HQ), and the engineering line SECURITY (Security & Data), by name (config/lines borrows).",
+  "id": "engineering",
+  "name": "Engineering",
+  "floor": "4",
+  "reportsTo": "cto",
+  "status": "active",
+  "agents": ["tech-lead", "developer", "reviewer", "tester"],
+  "lines": ["engineering", "eng-triage"],
+  "rooms": []
+}

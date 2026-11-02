@@ -1,0 +1,23 @@
+{
+  "$comment": "FIXTURE for the E3 dry run only (mock provider, $0). Not an owner product decision: the station's real product list is config/products.json (one DRAFT entry). A 5-file spec so the set fits Etsy's 5-file limit without the zip build, which is not ported yet.",
+  "products": [
+    {
+      "key": "dry-run-sticker-pack-5",
+      "status": "FIXTURE (E3 dry run): not an owner product",
+      "digital": true,
+      "kind": "asset-pack",
+      "licence": "personal-use",
+      "deliverables": {
+        "files": [
+          { "format": "png", "widthPx": 1500, "heightPx": 1500, "purpose": "sticker 1 of 5" },
+          { "format": "png", "widthPx": 1500, "heightPx": 1500, "purpose": "sticker 2 of 5" },
+          { "format": "png", "widthPx": 1500, "heightPx": 1500, "purpose": "sticker 3 of 5" },
+          { "format": "png", "widthPx": 1500, "heightPx": 1500, "purpose": "sticker 4 of 5" },
+          { "format": "png", "widthPx": 1500, "heightPx": 1500, "purpose": "sticker 5 of 5" }
+        ]
+      },
+      "aspectRatio": "1:1",
+      "transparent": true
+    }
+  ]
+}

@@ -1,0 +1,24 @@
+{
+  "$comment": "R1 (RESTRUCTURE.md §2.2, §2.3): in config from R1, \"not hired yet\" until R5. The engine refuses to run a not-hired agent and it costs nothing; its prompt, maxOutputTokens and write paths are set when it is hired. Model, effort and thinking are the owner's (R0.2, R0.3); every limit here is a proposal (§2.2 \"Limits (proposed)\").",
+  "key": "outreach-writer",
+  "name": "OUTREACH-WRITER",
+  "department": "sales-marketing",
+  "status": "not-hired",
+  "phase": "R5",
+  "tier": "strong",
+  "effort": "low",
+  "thinking": "off",
+  "tools": [
+    "fs_read",
+    "fs_list",
+    "fs_write"
+  ],
+  "limits": {
+    "maxTurns": 20
+  },
+  "proposals": [
+    "limits"
+  ],
+  "enabled": false,
+  "role": "First-contact and follow-up email drafts; the engine adds the sender identity, notice line and opt-out; the owner sends."
+}

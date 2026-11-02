@@ -1,0 +1,26 @@
+{
+  "$comment": "R1 (RESTRUCTURE.md §2.2, §2.3): in config from R1, \"not hired yet\" until R5. The engine refuses to run a not-hired agent and it costs nothing; its prompt, maxOutputTokens and write paths are set when it is hired. Model, effort and thinking are the owner's (R0.2, R0.3); every limit here is a proposal (§2.2 \"Limits (proposed)\").",
+  "key": "compliance",
+  "name": "COMPLIANCE",
+  "department": "hq",
+  "reportsTo": "owner",
+  "status": "not-hired",
+  "phase": "R5",
+  "tier": "strong",
+  "effort": "medium",
+  "thinking": "default",
+  "tools": [
+    "fs_read",
+    "fs_list",
+    "submit_verdict"
+  ],
+  "limits": {
+    "maxTurns": 20,
+    "runCapUsd": 0.1
+  },
+  "proposals": [
+    "limits"
+  ],
+  "enabled": false,
+  "role": "Reviews every outbound draft: pass, revise or refuse. Reports to the owner, not the CEO; no agent can override its verdict (locked)."
+}

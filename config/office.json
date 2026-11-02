@@ -1,0 +1,135 @@
+{
+  "$comment": "Office layout for the 3D view: departments (grid rectangles) and one desk per agent key. Coordinates are the owner's own floor plan from the legacy build (rooms + desk positions); edit here to move desks. B0 (owner, 21/10/2026): the building has floors. Each business (config/businesses/<id>.json) lists its departments; the shared floor (floor 0: Finance, Compliance, OVERSEER and the lounge) is the shared block below. Every department belongs to exactly one business or to the shared floor; the shared agents serve every business.",
+  "shared": {
+    "$comment": "the shared floor: the ledger and budgets view (Finance), originality, platform terms and privacy rules (Compliance) and OVERSEER, serving every business; the lounge is here",
+    "floor": 0,
+    "name": "Shared services",
+    "departments": [
+      "finance",
+      "compliance",
+      "overseer"
+    ],
+    "agents": [
+      "overseer"
+    ],
+    "lounge": true
+  },
+  "departments": [
+    {
+      "key": "research",
+      "name": "RESEARCH",
+      "rect": {
+        "x1": 0,
+        "y1": 0,
+        "x2": 17,
+        "y2": 10
+      }
+    },
+    {
+      "key": "design",
+      "name": "DESIGN",
+      "rect": {
+        "x1": 6,
+        "y1": 11,
+        "x2": 12,
+        "y2": 15
+      }
+    },
+    {
+      "key": "office",
+      "name": "OFFICE",
+      "rect": {
+        "x1": 18,
+        "y1": 3,
+        "x2": 25,
+        "y2": 8
+      }
+    },
+    {
+      "key": "finance",
+      "name": "FINANCE",
+      "rect": {
+        "x1": 0,
+        "y1": 17,
+        "x2": 8,
+        "y2": 22
+      }
+    },
+    {
+      "key": "compliance",
+      "name": "COMPLIANCE",
+      "rect": {
+        "x1": 9,
+        "y1": 17,
+        "x2": 17,
+        "y2": 22
+      }
+    },
+    {
+      "key": "overseer",
+      "name": "OVERSEER",
+      "rect": {
+        "x1": 18,
+        "y1": 17,
+        "x2": 25,
+        "y2": 22
+      }
+    }
+  ],
+  "desks": {
+    "evidence-checker": {
+      "x": 4,
+      "y": 1,
+      "w": 3,
+      "h": 1
+    },
+    "demand-researcher": {
+      "x": 12,
+      "y": 1,
+      "w": 3,
+      "h": 1
+    },
+    "trend-scout": {
+      "x": 4,
+      "y": 4,
+      "w": 3,
+      "h": 1
+    },
+    "designer": {
+      "x": 10,
+      "y": 12,
+      "w": 3,
+      "h": 1
+    },
+    "qa-design": {
+      "x": 10,
+      "y": 14,
+      "w": 3,
+      "h": 1
+    },
+    "qa-listing": {
+      "x": 18,
+      "y": 4,
+      "w": 3,
+      "h": 1
+    },
+    "lister": {
+      "x": 18,
+      "y": 6,
+      "w": 3,
+      "h": 1
+    },
+    "rejects-desk": {
+      "x": 18,
+      "y": 8,
+      "w": 3,
+      "h": 1
+    },
+    "overseer": {
+      "x": 20,
+      "y": 19,
+      "w": 3,
+      "h": 1
+    }
+  }
+}

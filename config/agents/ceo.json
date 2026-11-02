@@ -1,0 +1,32 @@
+{
+  "$comment": "R3 (owner's go, 30/10/2026; RESTRUCTURE.md §2.1, §2.2, §2.3, §8 R3): hired for the weekly priorities memo (src/engine/execs.mjs, line ceo-memo). Recommends only, locked in code (src/engine/locked.mjs ceo-recommends-only): its tools are fs_read, fs_list and fs_write in products/station/memos and nothing else; it decides no request and changes no policy, budget or cap. Model, effort and thinking are the owner's (R0.2, R0.3: Sonnet, medium, off); every limit here is a proposal (§2.2 \"Limits (proposed)\"; maxOutputTokens set at hiring, R3).",
+  "key": "ceo",
+  "name": "CEO",
+  "department": "hq",
+  "reportsTo": "owner",
+  "status": "active",
+  "phase": "R3",
+  "tier": "strong",
+  "effort": "medium",
+  "thinking": "off",
+  "tools": [
+    "fs_read",
+    "fs_list",
+    "fs_write"
+  ],
+  "folder": "products/station/memos",
+  "writes": [
+    "*.md"
+  ],
+  "limits": {
+    "maxTurns": 30,
+    "runCapUsd": 0.5,
+    "maxOutputTokens": 8000
+  },
+  "proposals": [
+    "limits"
+  ],
+  "enabled": true,
+  "role": "Weekly priorities memo across products and decision proposals (options, recommendation, cost) for the owner. Recommends only (locked in code).",
+  "hired": "R3"
+}

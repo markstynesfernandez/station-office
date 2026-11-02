@@ -1,0 +1,52 @@
+{
+  "name": "station",
+  "version": "0.2.0",
+  "private": true,
+  "description": "Station: the station's own agent engine and its live 3D office view (E1-E3: mock provider only).",
+  "type": "module",
+  "engines": {
+    "node": ">=22"
+  },
+  "scripts": {
+    "start": "node scripts/start.mjs",
+    "mock": "node src/server/index.mjs --fixtures",
+    "test": "node --test --test-global-setup=tests/helpers/temp-guard.mjs",
+    "test:record": "node scripts/record-tests.mjs",
+    "test:docker": "node --test --test-global-setup=tests/helpers/temp-guard.mjs tests/docker/*.docker.mjs",
+    "deploy:live": "node scripts/deploy-live.mjs",
+    "screenshots": "node scripts/screenshots.mjs",
+    "snapshot-fixtures": "node scripts/snapshot-fixtures.mjs",
+    "estop": "node scripts/estop.mjs",
+    "legacy-view": "node src/server/index.mjs --legacy",
+    "dry-run": "node scripts/dry-run.mjs",
+    "dry-run:scout": "node scripts/dry-run-scout.mjs",
+    "port-drift": "node scripts/port-drift.mjs",
+    "demo": "node scripts/demo.mjs",
+    "demo:record": "node scripts/demo-record.mjs",
+    "import-legacy": "node scripts/import-legacy.mjs",
+    "build-office": "node scripts/build-office.mjs",
+    "screenshots-r3a": "node scripts/screenshots-r3a.mjs",
+    "screenshots-r3b": "node scripts/screenshots-r3b.mjs",
+    "screenshots-r7": "node scripts/screenshots-r7.mjs",
+    "owner": "node scripts/owner.mjs",
+    "parity": "node scripts/parity-pngtuber.mjs",
+    "smoke:live": "node scripts/smoke-live.mjs",
+    "scout:live": "node scripts/scout-live.mjs",
+    "line:live": "node scripts/line-live.mjs",
+    "owner-brief": "node scripts/owner-brief.mjs",
+    "settle:images": "node scripts/settle-images.mjs",
+    "settle:failed": "node scripts/settle-failed.mjs",
+    "migrate:businesses": "node scripts/migrate-businesses.mjs",
+    "migrate:products": "node scripts/migrate-products.mjs",
+    "check-image": "node scripts/check-image.mjs"
+  },
+  "dependencies": {
+    "@anthropic-ai/sdk": "0.131.0",
+    "croner": "10.0.1",
+    "sharp": "0.34.5",
+    "three": "0.186.1"
+  },
+  "devDependencies": {
+    "playwright": "1.64.1"
+  }
+}

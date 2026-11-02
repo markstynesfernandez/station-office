@@ -1,0 +1,35 @@
+{
+  "$comment": "Agent config (ENGINE-PLAN.md §2.1). Prompt: prompts/agents/trend-scout.md (+ the skills its front-matter names). Genre-trend scouting (DECISIONS.md): public popularity signals only, read as data; the only agent that may see scouting/ (scoutingNotes). Web: search and fetch only, maxWebCalls enforced by the engine (tools/index.mjs). fs tools only to write its notes and genre drafts (its own drafts folder, scout-drafts/). The page may change enabled, tier and effort only.",
+  "key": "trend-scout",
+  "name": "TREND-SCOUT",
+  "department": "RESEARCH",
+  "status": "archived",
+  "archived": true,
+  "archivedNote": "R1 (owner, 22/10/2026): Etsy production stops; archived, not deleted. The engine refuses to run it; its desk shows dimmed in the trophy room on G.",
+  "tier": "cheap",
+  "effort": "low",
+  "thinking": "off",
+  "thinkingNote": "owner D2 17/10/2026: off for the first full live run (config/engine.json thinking); set \"default\" to turn it on for this agent",
+  "tools": [
+    "fs_read",
+    "fs_list",
+    "fs_write",
+    "web_search",
+    "web_fetch"
+  ],
+  "folder": "research",
+  "writes": [
+    "scouting/*/*/notes.json",
+    "scout-drafts/*/*.md"
+  ],
+  "scoutingNotes": true,
+  "limits": {
+    "maxTurns": 40,
+    "maxOutputTokens": 8000,
+    "maxWebCalls": 12,
+    "maxImages": 0
+  },
+  "color": "#6fb3c9",
+  "enabled": true,
+  "role": "Reads public trend coverage and turns trending game genres into original genre briefs for the product key its run is given."
+}

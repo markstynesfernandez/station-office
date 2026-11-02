@@ -1,0 +1,8 @@
+{
+  "$comment": "FIXTURE for the E3 dry run only. Applied on top of config/station.config.json in the dry-run engine, never in a real one. These are NOT owner decisions: the real digital-download notice and personal-use licence are still DRAFT, and the real AI disclosure says the files are 'cleaned up', which needs the station build step (not ported yet). The package gate requires owner-approved wording, so the dry run marks these as approved FIXTURE values to show the whole line working.",
+  "set": {
+    "digital.listingNoticeStatus": "owner-approved FIXTURE (E3 dry run only; the real wording is still DRAFT)",
+    "digital.licences.personal-use.status": "owner-approved FIXTURE (E3 dry run only; the real wording is still DRAFT)",
+    "digital.aiDisclosure.text": "FIXTURE disclosure for the E3 dry run: created by the seller using AI image generation tools and checked by the seller before listing."
+  }
+}

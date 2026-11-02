@@ -1,0 +1,126 @@
+{
+  "$comment": "Digital product specs for Room 1 (productType \"digital\", owner 2026-10-16). EMPTY until the owner picks a niche from the research (station-workspace/research-lab/scouting/). One entry per product type; the package gate checks every deliverable set against its entry. Agents read a copy (seed.mjs).",
+  "$schema": {
+    "key": "lowercase id used as a brief's product_type, e.g. \"bingo-printable-set\"",
+    "digital": "true (required): no production cost, no shipping; floor = Etsy fees + minimum margin",
+    "kind": "printable | wallpaper-set | asset-pack | other (description only)",
+    "licence": "a key of config.digital.licences: personal-use | commercial-standard | commercial-content",
+    "deliverables": {
+      "files": "[{ \"format\": \"png|jpg\", \"widthPx\": n, \"heightPx\": n, \"purpose\": \"what the buyer uses it for\" }]: the exact FORMAT of the set (owner, 18/10/2026: the product spec defines the format only, i.e. how many files, format, pixel size, alpha and packaging; each file's subject comes from the brief's file list, never from here); count <= config.digital.etsyFileLimits.maxFiles, or, with package, the exact contents of the zip",
+      "package": "optional { \"kind\": \"zip\", \"preview\": true }: the station builds the deliverables from the Designer's raw files (set-vN/raw/): ONE zip holding exactly `files`, the listing's only download (owner, 2026-10-16). With preview: true it also makes a preview image (config.digital.build.preview) in set-vN/listing/: a listing photo, never a download file.",
+      "prep": "optional { \"cleanup\": true, \"upscale\": \"realesrgan\" }: what the station does to each raw file before it goes into the zip (config.digital.build); the package gate requires a matching record for every delivered file",
+      "note": "printables: pixels = inches x 300 (e.g. US Letter 8.5x11 in = 2550x3300 px)"
+    },
+    "variants": "optional [{ \"label\": \"Digital download\" }]; default one variant \"Digital download\"",
+    "listingNotice": "optional { \"text\": \"...\", \"status\": \"owner-approved YYYY-MM-DD\" }: this product's digital-download notice (it may name the files), stated word for word; default config.digital.listingNotice",
+    "styleReference": "optional { \"ownerOk\": true }: file 1 is drawn alone first and approved by the owner (run-line --first-file, scripts/style-ref.mjs), then sent to the image model as the style reference for every other file (run-line --after-style-ok); the package gate requires the approved file 1 in the build",
+    "priceFloorUsd": "optional { \"value\": n, \"decidedBy\": \"owner\", \"date\": \"YYYY-MM-DD\" }: the owner's price floor for this product in USD, used instead of the fee-model digital floor by every price check (brief check, intake, the scout's brief check, the price fill, the package gate). A minimum: prices may be higher when the evidence supports it.",
+    "aspectRatio": "the image generator's aspect ratio for the main artwork, e.g. \"3:4\"",
+    "transparent": "true | false: whether the generator draws on a transparent background"
+  },
+  "products": [
+    {
+      "key": "pngtuber-prop-pack",
+      "status": "Owner, 2026-10-16: niche #4 picked. Delivered as ONE zip of the 12 PNGs, the only download; the preview image is a listing photo only (owner, 2026-10-16). Licence commercial-content and the digital-download notice owner-approved, image model's commercial use owner-confirmed (2026-10-16). File 1 is drawn alone and approved by the owner before files 2-12 (styleReference); no other runs without the owner's go.",
+      "digital": true,
+      "kind": "asset-pack",
+      "licence": "commercial-content",
+      "licenceNote": "Owner, 2026-10-16: the commercial licence, reworded for streamers (no merchandise or print-on-demand); the personal-use licence is dropped for this pack.",
+      "listingNotice": {
+        "text": "This is a digital download. Nothing will be shipped. You'll receive one ZIP file containing 12 transparent PNG files (2000×2000 px). The files are available to download from Etsy once payment is confirmed.",
+        "status": "owner-approved 2026-10-16 (wording by the owner)"
+      },
+      "styleReference": {
+        "ownerOk": true,
+        "note": "Owner go 2026-10-16: file 1 (the brief's item 1; the steaming mug on DESK-PROPS-01) is generated alone, the owner sees it flattened on light and dark and approves it, then it is the image model's style reference for files 2-12."
+      },
+      "deliverables": {
+        "package": {
+          "kind": "zip",
+          "preview": true
+        },
+        "prep": {
+          "cleanup": true,
+          "upscale": "realesrgan"
+        },
+        "files": [
+          {
+            "format": "png",
+            "widthPx": 2000,
+            "heightPx": 2000,
+            "purpose": "file 1 of 12 (the style reference): a transparent prop placed beside the buyer's avatar in a stream scene; its subject is the brief's item 1"
+          },
+          {
+            "format": "png",
+            "widthPx": 2000,
+            "heightPx": 2000,
+            "purpose": "file 2 of 12: a transparent prop; its subject is the brief's item 2"
+          },
+          {
+            "format": "png",
+            "widthPx": 2000,
+            "heightPx": 2000,
+            "purpose": "file 3 of 12: a transparent prop; its subject is the brief's item 3"
+          },
+          {
+            "format": "png",
+            "widthPx": 2000,
+            "heightPx": 2000,
+            "purpose": "file 4 of 12: a transparent prop; its subject is the brief's item 4"
+          },
+          {
+            "format": "png",
+            "widthPx": 2000,
+            "heightPx": 2000,
+            "purpose": "file 5 of 12: a transparent prop; its subject is the brief's item 5"
+          },
+          {
+            "format": "png",
+            "widthPx": 2000,
+            "heightPx": 2000,
+            "purpose": "file 6 of 12: a transparent prop; its subject is the brief's item 6"
+          },
+          {
+            "format": "png",
+            "widthPx": 2000,
+            "heightPx": 2000,
+            "purpose": "file 7 of 12: a transparent prop; its subject is the brief's item 7"
+          },
+          {
+            "format": "png",
+            "widthPx": 2000,
+            "heightPx": 2000,
+            "purpose": "file 8 of 12: a transparent prop; its subject is the brief's item 8"
+          },
+          {
+            "format": "png",
+            "widthPx": 2000,
+            "heightPx": 2000,
+            "purpose": "file 9 of 12: a transparent prop; its subject is the brief's item 9"
+          },
+          {
+            "format": "png",
+            "widthPx": 2000,
+            "heightPx": 2000,
+            "purpose": "file 10 of 12: a transparent prop; its subject is the brief's item 10"
+          },
+          {
+            "format": "png",
+            "widthPx": 2000,
+            "heightPx": 2000,
+            "purpose": "file 11 of 12: a transparent prop; its subject is the brief's item 11"
+          },
+          {
+            "format": "png",
+            "widthPx": 2000,
+            "heightPx": 2000,
+            "purpose": "file 12 of 12: a transparent prop; its subject is the brief's item 12"
+          }
+        ],
+        "note": "2000x2000 transparent PNG per prop (inside the zip): the size the owner recorded on a competitor listing (2026-10-16). The image generator drew 1024x1024 on earlier runs (measured 2026-10-16), so each raw file is cleaned up, trimmed, upscaled with Real-ESRGAN (alpha upscaled separately) and padded onto the 2000x2000 canvas by the station (config.digital.build)."
+      },
+      "aspectRatio": "1:1",
+      "transparent": true
+    }
+  ]
+}

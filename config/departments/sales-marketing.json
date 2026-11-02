@@ -1,0 +1,11 @@
+{
+  "$comment": "R1: floor 2. Lead research, outreach desk, content desk, the pipeline board. Reports to the CEO. Nothing here runs before R5 (legal advice first).",
+  "id": "sales-marketing",
+  "name": "Sales & Marketing",
+  "floor": "2",
+  "reportsTo": "ceo",
+  "status": "active",
+  "agents": ["lead-researcher", "lead-checker", "outreach-writer", "content-writer"],
+  "lines": [],
+  "rooms": []
+}

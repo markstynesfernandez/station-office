@@ -1,0 +1,23 @@
+{
+  "$comment": "DEMO (npm run demo, mock provider, $0): simulated data, not an owner product decision. The station's real product list is config/products.json. A 5-file spec so the set fits Etsy's 5-file limit without the zip build, which is not ported yet. Applied only to the demo engine, never to a real one.",
+  "products": [
+    {
+      "key": "demo-sticker-pack-5",
+      "status": "DEMO (simulated data): not an owner product",
+      "digital": true,
+      "kind": "asset-pack",
+      "licence": "personal-use",
+      "deliverables": {
+        "files": [
+          { "format": "png", "widthPx": 1500, "heightPx": 1500, "purpose": "sticker 1 of 5" },
+          { "format": "png", "widthPx": 1500, "heightPx": 1500, "purpose": "sticker 2 of 5" },
+          { "format": "png", "widthPx": 1500, "heightPx": 1500, "purpose": "sticker 3 of 5" },
+          { "format": "png", "widthPx": 1500, "heightPx": 1500, "purpose": "sticker 4 of 5" },
+          { "format": "png", "widthPx": 1500, "heightPx": 1500, "purpose": "sticker 5 of 5" }
+        ]
+      },
+      "aspectRatio": "1:1",
+      "transparent": true
+    }
+  ]
+}

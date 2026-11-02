@@ -1,0 +1,1367 @@
+{
+  "version": 3,
+  "look": {
+    "floor": {
+      "tile": 2.2,
+      "colour": "#a47f58",
+      "texture": "textures/floor.jpg"
+    },
+    "textures": {
+      "fabric": {
+        "mean": "#c8c3ba"
+      },
+      "rug": {
+        "mean": "#a9a6a1"
+      }
+    },
+    "themed": {
+      "day": {
+        "cap": "#cdc2b2",
+        "skirting": "#e4dacb",
+        "wall_research": "#d7e0e7",
+        "wall_design": "#e8dbe7",
+        "wall_office": "#dee9d7",
+        "wall_atrium": "#fcf9f3",
+        "concrete": "#dcd6cd",
+        "slab": "#d8d0c3",
+        "plinth": "#ece6dd",
+        "plinth_edge": "#cfc5b7",
+        "plaza": "#cdc6bb",
+        "closet_wall": "#dedad3",
+        "closet_floor": "#bdbab5",
+        "design_backing": "#e3dbce",
+        "design_credenza": "#e8e1d6",
+        "fabric": "#34353a",
+        "upholstery": "#d8cec0",
+        "rug": "#6b6762"
+      },
+      "evening": {
+        "cap": "#111113",
+        "skirting": "#232427",
+        "wall_research": "#47505b",
+        "wall_design": "#534c5b",
+        "wall_office": "#4d5650",
+        "wall_atrium": "#3c3d42",
+        "concrete": "#5a5753",
+        "slab": "#1d1d20",
+        "plinth": "#4a4846",
+        "plinth_edge": "#2c2c2f",
+        "plaza": "#43413e",
+        "closet_wall": "#2a2b2f",
+        "closet_floor": "#222225",
+        "design_backing": "#141416",
+        "design_credenza": "#2e2f33",
+        "fabric": "#34353a",
+        "upholstery": "#5b5a61",
+        "rug": "#4a4a4e"
+      }
+    },
+    "themedTex": {
+      "design_wood": {
+        "day": "oak",
+        "evening": "walnut"
+      }
+    },
+    "atlas": {
+      "board": [
+        0,
+        0.625,
+        0.625,
+        1
+      ],
+      "white": [
+        0,
+        0.3125,
+        0.625,
+        0.625
+      ],
+      "art": [
+        [
+          0.625,
+          0.75,
+          0.8125,
+          1
+        ],
+        [
+          0.8125,
+          0.75,
+          1,
+          1
+        ],
+        [
+          0.625,
+          0.5,
+          0.8125,
+          0.75
+        ],
+        [
+          0.8125,
+          0.5,
+          1,
+          0.75
+        ],
+        [
+          0.625,
+          0.25,
+          0.8125,
+          0.5
+        ],
+        [
+          0.8125,
+          0.25,
+          1,
+          0.5
+        ]
+      ]
+    },
+    "warm": {
+      "themed": {
+        "day": {
+          "wall_warm": "#efe4d2",
+          "cap_warm": "#f7f0e4",
+          "window": "#f6f2ea",
+          "fabric_warm": "#b4a893",
+          "rug_warm": "#3a3734"
+        },
+        "evening": {
+          "wall_warm": "#a89b88",
+          "cap_warm": "#bdb09c",
+          "window": "#3b4152",
+          "fabric_warm": "#b4a893",
+          "rug_warm": "#3a3734"
+        }
+      },
+      "textures": {
+        "plaster": {
+          "mean": "#e9e2d6"
+        },
+        "lightwood": {
+          "mean": "#cfb08a"
+        }
+      },
+      "tile": {
+        "colour": "#ddd1bd",
+        "grout": "#b3a691",
+        "size": 0.9,
+        "grout_w": 0.014,
+        "texture": 1.8
+      },
+      "band": 0.3,
+      "plinth": "#2c2a28",
+      "rug": {
+        "field": "#3a3734",
+        "border": "#2a2826"
+      },
+      "chair": "#b4a893",
+      "pedestal": "#e9e1d3",
+      "metal": "#33302d",
+      "accents": {
+        "terracotta": "#c0673f",
+        "sage": "#8fa382",
+        "brown": "#8a6a4f"
+      },
+      "pots": {
+        "terracotta": "#b9653f",
+        "cream": "#e6dccb",
+        "sage": "#93a587",
+        "brown": "#7a5d45"
+      },
+      "books": [
+        "#c0673f",
+        "#8fa382",
+        "#8a6a4f",
+        "#e6dccb",
+        "#3a3734",
+        "#d9b26f",
+        "#a8553a",
+        "#6f7f62",
+        "#b39b7c",
+        "#f1e9dc",
+        "#5c4a3b",
+        "#c9b48f"
+      ]
+    }
+  },
+  "units": {
+    "research": {
+      "gltf": "research.gltf",
+      "rooms": [
+        "research"
+      ],
+      "lightmaps": {
+        "day": {
+          "file": "lightmap-research-day.webp",
+          "scale": 1.051244,
+          "coverage": 0.9041,
+          "p995": 0.96714,
+          "max": 1.1137
+        },
+        "evening": {
+          "file": "lightmap-research-evening.webp",
+          "scale": 9.568462,
+          "coverage": 0.9041,
+          "p995": 8.80299,
+          "max": 51.4252
+        }
+      },
+      "materials": [
+        "solid",
+        "leaf",
+        "oak",
+        "walnut",
+        "floor",
+        "fabric",
+        "rug",
+        "decal",
+        "cap",
+        "skirting",
+        "wall_research",
+        "led"
+      ],
+      "atlas": {
+        "size": 2688,
+        "density": 107.28,
+        "surface": 406.67,
+        "uvCoverage": 0.6478
+      },
+      "build": {
+        "at": "2026-10-17T13:06:43.331Z",
+        "blender": "Blender 5.2.1 LTS",
+        "device": "OPTIX: NVIDIA GeForce RTX 5060 Laptop GPU",
+        "samples": 1024,
+        "blenderSeconds": 90.2,
+        "seconds": 93.3,
+        "phases": {
+          "model": 0.1,
+          "textures": 0.48,
+          "uv": 10.92,
+          "bake_day": 19.64,
+          "bake_evening": 53.08,
+          "export": 0.47
+        }
+      }
+    },
+    "design": {
+      "gltf": "design.gltf",
+      "rooms": [
+        "design"
+      ],
+      "lightmaps": {
+        "day": {
+          "file": "lightmap-design-day.webp",
+          "scale": 1.051882,
+          "coverage": 0.9029,
+          "p995": 0.96773,
+          "max": 1.1379
+        },
+        "evening": {
+          "file": "lightmap-design-evening.webp",
+          "scale": 10.935591,
+          "coverage": 0.9029,
+          "p995": 10.06074,
+          "max": 46.9068
+        }
+      },
+      "materials": [
+        "solid",
+        "leaf",
+        "oak",
+        "floor",
+        "fabric",
+        "rug",
+        "design_wood",
+        "decal",
+        "cap",
+        "design_backing",
+        "design_credenza",
+        "skirting",
+        "wall_design",
+        "led"
+      ],
+      "atlas": {
+        "size": 2176,
+        "density": 103.42,
+        "surface": 277.46,
+        "uvCoverage": 0.6268
+      },
+      "build": {
+        "at": "2026-10-17T13:07:30.196Z",
+        "blender": "Blender 5.2.1 LTS",
+        "device": "OPTIX: NVIDIA GeForce RTX 5060 Laptop GPU",
+        "samples": 1024,
+        "blenderSeconds": 45.3,
+        "seconds": 46.9,
+        "phases": {
+          "model": 0.05,
+          "textures": 0.34,
+          "uv": 9.31,
+          "bake_day": 12.72,
+          "bake_evening": 17.96,
+          "export": 0.46
+        }
+      }
+    },
+    "office": {
+      "gltf": "office.gltf",
+      "rooms": [
+        "office"
+      ],
+      "lightmaps": {
+        "day": {
+          "file": "lightmap-office-day.webp",
+          "scale": 4.707256,
+          "coverage": 0.8802,
+          "p995": 4.33068,
+          "max": 6.6863
+        },
+        "evening": {
+          "file": "lightmap-office-evening.webp",
+          "scale": 2.534908,
+          "coverage": 0.8802,
+          "p995": 2.33212,
+          "max": 68.5819
+        }
+      },
+      "high": {
+        "size": 6144,
+        "day": {
+          "file": "high/lightmap-office-day.webp"
+        },
+        "evening": {
+          "file": "high/lightmap-office-evening.webp"
+        }
+      },
+      "materials": [
+        "solid",
+        "leaf",
+        "decal",
+        "cap_warm",
+        "fabric_warm",
+        "lightwood",
+        "rug_warm",
+        "tile",
+        "wall_warm",
+        "led",
+        "window"
+      ],
+      "atlas": {
+        "size": 3072,
+        "density": 136.42,
+        "surface": 331.67,
+        "uvCoverage": 0.6541
+      },
+      "build": {
+        "at": "2026-10-21T14:06:12.782Z",
+        "blender": "Blender 5.2.1 LTS",
+        "device": "OPTIX: NVIDIA GeForce RTX 5060 Laptop GPU",
+        "samples": 1024,
+        "blenderSeconds": 571.2,
+        "seconds": 590.5,
+        "phases": {
+          "model": 0.08,
+          "textures": 1.99,
+          "uv": 14.03,
+          "bake_day": 266.63,
+          "bake_evening": 255.44,
+          "export": 2.12
+        }
+      }
+    },
+    "atrium": {
+      "gltf": "atrium.gltf",
+      "rooms": [
+        "atrium",
+        "lounge"
+      ],
+      "lightmaps": {
+        "day": {
+          "file": "lightmap-atrium-day.webp",
+          "scale": 1.13968,
+          "coverage": 0.7201,
+          "p995": 1.04851,
+          "max": 1.5067
+        },
+        "evening": {
+          "file": "lightmap-atrium-evening.webp",
+          "scale": 0.837407,
+          "coverage": 0.7201,
+          "p995": 0.77041,
+          "max": 46.4004
+        }
+      },
+      "materials": [
+        "solid",
+        "leaf",
+        "oak",
+        "floor",
+        "decal",
+        "concrete",
+        "cap",
+        "closet_floor",
+        "closet_wall",
+        "plaza",
+        "plinth",
+        "plinth_edge",
+        "skirting",
+        "slab",
+        "wall_atrium",
+        "led"
+      ],
+      "atlas": {
+        "size": 2624,
+        "density": 100.15,
+        "surface": 420.65,
+        "uvCoverage": 0.6127
+      },
+      "build": {
+        "at": "2026-10-21T14:07:25.761Z",
+        "blender": "Blender 5.2.1 LTS",
+        "device": "OPTIX: NVIDIA GeForce RTX 5060 Laptop GPU",
+        "samples": 1024,
+        "blenderSeconds": 48.6,
+        "seconds": 50.9,
+        "phases": {
+          "model": 0.04,
+          "textures": 1.26,
+          "uv": 5.27,
+          "bake_day": 20.8,
+          "bake_evening": 15.28,
+          "export": 0.45
+        }
+      }
+    }
+  },
+  "rooms": {
+    "research": {
+      "unit": "research",
+      "spec": {
+        "key": "research",
+        "kind": "research",
+        "w": 10.9,
+        "d": 8.7,
+        "floor": 0.46,
+        "wallH": 2.7,
+        "wallT": 0.18,
+        "desks": [
+          {
+            "x": 4.45,
+            "z": 2.4,
+            "lshape": true,
+            "chair": {
+              "x": 4.45,
+              "z": 3.38
+            }
+          },
+          {
+            "x": 8.25,
+            "z": 2.4,
+            "lshape": false,
+            "chair": {
+              "x": 8.25,
+              "z": 3.38
+            }
+          },
+          {
+            "x": 4.45,
+            "z": 5.9,
+            "lshape": true,
+            "chair": {
+              "x": 4.45,
+              "z": 6.88
+            }
+          }
+        ],
+        "plants": [
+          {
+            "x": 10.25,
+            "z": 0.75,
+            "kind": "tall"
+          },
+          {
+            "x": 0.75,
+            "z": 8,
+            "kind": "tall"
+          }
+        ],
+        "props": [],
+        "walls": [
+          {
+            "axis": "x",
+            "at": 0,
+            "from": 0,
+            "to": 8.7,
+            "h": 2.7
+          },
+          {
+            "axis": "z",
+            "at": 0,
+            "from": 0,
+            "to": 10.9,
+            "h": 2.7
+          }
+        ],
+        "openFront": true,
+        "openRight": true
+      },
+      "node": "room_research",
+      "leds": "leds_research",
+      "strips": [
+        {
+          "a": [
+            0.23,
+            0.492,
+            0.225
+          ],
+          "b": [
+            10.85,
+            0.492,
+            0.225
+          ],
+          "emit": [
+            0,
+            0.9439,
+            -0.3304
+          ],
+          "kind": "cove"
+        },
+        {
+          "a": [
+            0.225,
+            0.492,
+            0.23
+          ],
+          "b": [
+            0.225,
+            0.492,
+            8.65
+          ],
+          "emit": [
+            -0.3304,
+            0.9439,
+            0
+          ],
+          "kind": "cove"
+        },
+        {
+          "a": [
+            0.39,
+            1.408,
+            0.53
+          ],
+          "b": [
+            9.66,
+            1.408,
+            0.53
+          ],
+          "emit": [
+            0,
+            -0.9578,
+            -0.2873
+          ],
+          "kind": "case"
+        },
+        {
+          "a": [
+            0.39,
+            1.842,
+            0.53
+          ],
+          "b": [
+            9.66,
+            1.842,
+            0.53
+          ],
+          "emit": [
+            0,
+            -0.9578,
+            -0.2873
+          ],
+          "kind": "case"
+        },
+        {
+          "a": [
+            0.39,
+            2.276,
+            0.53
+          ],
+          "b": [
+            9.66,
+            2.276,
+            0.53
+          ],
+          "emit": [
+            0,
+            -0.9578,
+            -0.2873
+          ],
+          "kind": "case"
+        },
+        {
+          "a": [
+            0.39,
+            2.71,
+            0.53
+          ],
+          "b": [
+            9.66,
+            2.71,
+            0.53
+          ],
+          "emit": [
+            0,
+            -0.9578,
+            -0.2873
+          ],
+          "kind": "case"
+        },
+        {
+          "a": [
+            0.415,
+            2.004,
+            0.79
+          ],
+          "b": [
+            0.415,
+            2.004,
+            1.91
+          ],
+          "emit": [
+            0.4104,
+            -0.9119,
+            0
+          ],
+          "kind": "shelf"
+        }
+      ],
+      "cushions": [
+        {
+          "x0": 0.8682,
+          "x1": 1.7248,
+          "z0": 2.3401,
+          "z1": 3.1967,
+          "top": 0.91
+        }
+      ],
+      "triangles": 9286
+    },
+    "design": {
+      "unit": "design",
+      "spec": {
+        "key": "design",
+        "kind": "design",
+        "w": 9.7,
+        "d": 8.7,
+        "floor": 0.46,
+        "wallH": 2.7,
+        "wallT": 0.18,
+        "desks": [
+          {
+            "x": 3.25,
+            "z": 2.4,
+            "lshape": true,
+            "chair": {
+              "x": 3.25,
+              "z": 3.38
+            }
+          },
+          {
+            "x": 7.05,
+            "z": 2.4,
+            "lshape": false,
+            "chair": {
+              "x": 7.05,
+              "z": 3.38
+            }
+          }
+        ],
+        "plants": [
+          {
+            "x": 9,
+            "z": 0.95,
+            "kind": "tall"
+          },
+          {
+            "x": 0.75,
+            "z": 8,
+            "kind": "small"
+          }
+        ],
+        "props": [
+          {
+            "kind": "easel",
+            "x": 8.75,
+            "z": 7.75,
+            "yaw": -2.3562
+          }
+        ],
+        "walls": [
+          {
+            "axis": "x",
+            "at": 0,
+            "from": 0,
+            "to": 8.7,
+            "h": 2.7
+          },
+          {
+            "axis": "z",
+            "at": 0,
+            "from": 0,
+            "to": 9.7,
+            "h": 2.7
+          }
+        ],
+        "openFront": true,
+        "openRight": false
+      },
+      "node": "room_design",
+      "leds": "leds_design",
+      "strips": [
+        {
+          "a": [
+            0.23,
+            0.492,
+            0.225
+          ],
+          "b": [
+            9.65,
+            0.492,
+            0.225
+          ],
+          "emit": [
+            0,
+            0.9439,
+            -0.3304
+          ],
+          "kind": "cove"
+        },
+        {
+          "a": [
+            0.225,
+            0.492,
+            0.23
+          ],
+          "b": [
+            0.225,
+            0.492,
+            8.65
+          ],
+          "emit": [
+            -0.3304,
+            0.9439,
+            0
+          ],
+          "kind": "cove"
+        },
+        {
+          "a": [
+            3.35,
+            2.91,
+            0.33
+          ],
+          "b": [
+            6.95,
+            2.91,
+            0.33
+          ],
+          "emit": [
+            0,
+            -0.8192,
+            -0.5735
+          ],
+          "kind": "board"
+        },
+        {
+          "a": [
+            0.55,
+            1.87,
+            0.405
+          ],
+          "b": [
+            1.85,
+            1.87,
+            0.405
+          ],
+          "emit": [
+            0,
+            -0.9119,
+            -0.4104
+          ],
+          "kind": "shelf"
+        },
+        {
+          "a": [
+            0.55,
+            2.37,
+            0.405
+          ],
+          "b": [
+            1.85,
+            2.37,
+            0.405
+          ],
+          "emit": [
+            0,
+            -0.9119,
+            -0.4104
+          ],
+          "kind": "shelf"
+        }
+      ],
+      "triangles": 4032
+    },
+    "office": {
+      "unit": "office",
+      "spec": {
+        "key": "office",
+        "kind": "office",
+        "w": 10.9,
+        "d": 8.7,
+        "floor": 0.46,
+        "wallH": 2.7,
+        "wallT": 0.18,
+        "desks": [
+          {
+            "x": 3.05,
+            "z": 2.4,
+            "lshape": true,
+            "chair": {
+              "x": 3.05,
+              "z": 3.38
+            }
+          },
+          {
+            "x": 6.85,
+            "z": 2.4,
+            "lshape": false,
+            "chair": {
+              "x": 6.85,
+              "z": 3.38
+            }
+          },
+          {
+            "x": 3.05,
+            "z": 5.9,
+            "lshape": true,
+            "chair": {
+              "x": 3.05,
+              "z": 6.88
+            }
+          }
+        ],
+        "plants": [
+          {
+            "x": 0.75,
+            "z": 8,
+            "kind": "tall"
+          },
+          {
+            "x": 10.2,
+            "z": 0.95,
+            "kind": "small"
+          }
+        ],
+        "props": [
+          {
+            "kind": "meeting",
+            "x": 9.4,
+            "z": 1.45,
+            "yaw": 0
+          }
+        ],
+        "walls": [
+          {
+            "axis": "x",
+            "at": 0,
+            "from": 0,
+            "to": 8.7,
+            "h": 2.7
+          },
+          {
+            "axis": "z",
+            "at": 0,
+            "from": 0,
+            "to": 10.9,
+            "h": 2.7
+          }
+        ],
+        "openFront": false,
+        "openRight": true
+      },
+      "node": "room_office",
+      "leds": "leds_office",
+      "windows": "win_office",
+      "strips": [
+        {
+          "a": [
+            0.48,
+            1.348,
+            0.65
+          ],
+          "b": [
+            2.23,
+            1.348,
+            0.65
+          ],
+          "emit": [
+            0,
+            -0.9578,
+            -0.2873
+          ],
+          "kind": "case"
+        },
+        {
+          "a": [
+            0.48,
+            1.752,
+            0.65
+          ],
+          "b": [
+            2.23,
+            1.752,
+            0.65
+          ],
+          "emit": [
+            0,
+            -0.9578,
+            -0.2873
+          ],
+          "kind": "case"
+        },
+        {
+          "a": [
+            0.48,
+            2.156,
+            0.65
+          ],
+          "b": [
+            2.23,
+            2.156,
+            0.65
+          ],
+          "emit": [
+            0,
+            -0.9578,
+            -0.2873
+          ],
+          "kind": "case"
+        },
+        {
+          "a": [
+            0.48,
+            2.56,
+            0.65
+          ],
+          "b": [
+            2.23,
+            2.56,
+            0.65
+          ],
+          "emit": [
+            0,
+            -0.9578,
+            -0.2873
+          ],
+          "kind": "case"
+        },
+        {
+          "a": [
+            3.39,
+            1.834,
+            0.555
+          ],
+          "b": [
+            4.81,
+            1.834,
+            0.555
+          ],
+          "emit": [
+            0,
+            -0.9119,
+            0.4104
+          ],
+          "kind": "shelf"
+        },
+        {
+          "a": [
+            3.39,
+            2.354,
+            0.555
+          ],
+          "b": [
+            4.81,
+            2.354,
+            0.555
+          ],
+          "emit": [
+            0,
+            -0.9119,
+            0.4104
+          ],
+          "kind": "shelf"
+        }
+      ],
+      "triangles": 9731
+    },
+    "lounge": {
+      "unit": "atrium",
+      "spec": {
+        "key": "lounge",
+        "kind": "lounge",
+        "w": 9.7,
+        "d": 8.7,
+        "floor": 0.46,
+        "open": true,
+        "seats": [],
+        "plants": []
+      },
+      "node": "room_lounge",
+      "leds": null,
+      "strips": [],
+      "triangles": 6
+    },
+    "atrium": {
+      "unit": "atrium",
+      "spec": {
+        "key": "atrium",
+        "kind": "atrium",
+        "w": 26,
+        "d": 21.7,
+        "floor": 0.46,
+        "wallH": 2.7,
+        "wallT": 0.18,
+        "coreR": 1.5,
+        "core": {
+          "x": 13.6,
+          "z": 10.85
+        },
+        "floorRects": [
+          {
+            "x0": 10.9,
+            "x1": 16.3,
+            "z0": 0,
+            "z1": 8.7
+          },
+          {
+            "x0": 0,
+            "x1": 26,
+            "z0": 8.7,
+            "z1": 13
+          },
+          {
+            "x0": 10.9,
+            "x1": 16.3,
+            "z0": 13,
+            "z1": 21.7
+          }
+        ],
+        "walls": [
+          {
+            "axis": "z",
+            "at": 0,
+            "from": 10.9,
+            "to": 16.3,
+            "h": 2.7,
+            "owner": "atrium",
+            "open": [
+              false,
+              false
+            ]
+          },
+          {
+            "axis": "x",
+            "at": 0,
+            "from": 8.7,
+            "to": 13,
+            "h": 2.7,
+            "owner": "atrium",
+            "open": [
+              false,
+              false
+            ]
+          },
+          {
+            "axis": "x",
+            "at": 11,
+            "from": 0,
+            "to": 4.78,
+            "h": 1.1,
+            "owner": "closet",
+            "open": [
+              false,
+              true
+            ]
+          }
+        ],
+        "occluders": [
+          {
+            "axis": "x",
+            "at": 0,
+            "from": 0,
+            "to": 8.7,
+            "h": 2.7
+          },
+          {
+            "axis": "z",
+            "at": 0,
+            "from": 0,
+            "to": 10.9,
+            "h": 2.7
+          },
+          {
+            "axis": "x",
+            "at": 16.3,
+            "from": 0,
+            "to": 8.7,
+            "h": 2.7
+          },
+          {
+            "axis": "z",
+            "at": 0,
+            "from": 16.3,
+            "to": 26,
+            "h": 2.7
+          },
+          {
+            "axis": "x",
+            "at": 0,
+            "from": 13,
+            "to": 21.7,
+            "h": 2.7
+          },
+          {
+            "axis": "z",
+            "at": 13,
+            "from": 0,
+            "to": 10.9,
+            "h": 2.7
+          }
+        ],
+        "closet": {
+          "x0": 11,
+          "x1": 12.5,
+          "z0": 0,
+          "z1": 4.78
+        },
+        "props": [
+          {
+            "kind": "printer",
+            "x": 13.4,
+            "z": 0.54,
+            "yaw": 3.1416
+          },
+          {
+            "kind": "cooler",
+            "x": 14.15,
+            "z": 0.44,
+            "yaw": 3.1416
+          },
+          {
+            "kind": "bench",
+            "x": 0.5,
+            "z": 10.85,
+            "yaw": -1.5708
+          },
+          {
+            "kind": "bench",
+            "x": 9.95,
+            "z": 11.9,
+            "yaw": -1.5708
+          },
+          {
+            "kind": "bench",
+            "x": 17.55,
+            "z": 9.35,
+            "yaw": 3.1416
+          },
+          {
+            "kind": "bench",
+            "x": 25.25,
+            "z": 10.65,
+            "yaw": 1.5708
+          },
+          {
+            "kind": "bench",
+            "x": 13.6,
+            "z": 21.2,
+            "yaw": 0
+          }
+        ],
+        "plants": [
+          {
+            "x": 0.62,
+            "z": 9.15,
+            "kind": "tall"
+          },
+          {
+            "x": 0.6,
+            "z": 12.5,
+            "kind": "small"
+          },
+          {
+            "x": 12.85,
+            "z": 4.28,
+            "kind": "small"
+          }
+        ]
+      },
+      "node": "room_atrium",
+      "leds": "leds_atrium",
+      "strips": [
+        {
+          "a": [
+            13.6,
+            0.783,
+            10.85
+          ],
+          "b": [
+            13.6,
+            0.783,
+            10.85
+          ],
+          "emit": [
+            0,
+            1,
+            0
+          ],
+          "kind": "ring"
+        },
+        {
+          "a": [
+            12.94,
+            1.794,
+            0.415
+          ],
+          "b": [
+            13.86,
+            1.794,
+            0.415
+          ],
+          "emit": [
+            0,
+            -0.9119,
+            0.4104
+          ],
+          "kind": "shelf"
+        }
+      ],
+      "triangles": 3004
+    }
+  },
+  "materials": {
+    "all": [
+      "solid",
+      "leaf",
+      "oak",
+      "walnut",
+      "floor",
+      "fabric",
+      "rug",
+      "decal",
+      "cap",
+      "skirting",
+      "wall_research",
+      "led",
+      "design_wood",
+      "design_backing",
+      "design_credenza",
+      "wall_design",
+      "cap_warm",
+      "fabric_warm",
+      "lightwood",
+      "rug_warm",
+      "tile",
+      "wall_warm",
+      "window",
+      "concrete",
+      "closet_floor",
+      "closet_wall",
+      "plaza",
+      "plinth",
+      "plinth_edge",
+      "slab",
+      "wall_atrium"
+    ],
+    "themed": [
+      "cap",
+      "skirting",
+      "wall_research",
+      "wall_design",
+      "wall_office",
+      "wall_atrium",
+      "concrete",
+      "slab",
+      "plinth",
+      "plinth_edge",
+      "plaza",
+      "closet_wall",
+      "closet_floor",
+      "design_backing",
+      "design_credenza",
+      "fabric",
+      "upholstery",
+      "rug"
+    ],
+    "themedTex": [
+      "design_wood"
+    ],
+    "decal": [
+      "decal"
+    ],
+    "canvas": [
+      "concrete"
+    ],
+    "unlit": [
+      "led"
+    ]
+  },
+  "build": {
+    "light": {
+      "day": {
+        "sun": 2.6,
+        "sky": "#dfe6f0",
+        "skyStrength": 0.55
+      },
+      "evening": {
+        "sky": "#8a90a4",
+        "skyStrength": 1.5,
+        "ledGain": 1,
+        "lamp": 25
+      }
+    },
+    "density": 100,
+    "script": "scripts/blender/build-office.py",
+    "library": "scripts/blender/office_lib.py",
+    "last": {
+      "units": [
+        "atrium"
+      ],
+      "full": false,
+      "at": "2026-10-21T14:07:25.769Z",
+      "seconds": 50.9,
+      "blender": "Blender 5.2.1 LTS"
+    },
+    "blender": "Blender 5.2.1 LTS",
+    "full": {
+      "at": "2026-10-17T11:12:07.500Z",
+      "seconds": 261.8,
+      "units": [
+        "research",
+        "design",
+        "office",
+        "atrium"
+      ]
+    }
+  },
+  "sizes": {
+    "total": {
+      "bytes": 9870736
+    },
+    "defaultTier": {
+      "bytes": 7036676
+    },
+    "highTierOnly": {
+      "bytes": 2834060
+    },
+    "budgetBytes": 10000000
+  }
+}

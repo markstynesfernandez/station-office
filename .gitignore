@@ -1,0 +1,29 @@
+# dependencies and local caches
+node_modules/
+.cache/
+
+# secrets: settings come from env vars only (.env.example is the template)
+.env
+
+# runtime data, demo data and generated output
+data/
+data-demo/
+dry-run/
+logs/
+*.log
+screenshots/
+
+# fixtures: the legacy snapshot stays local; fixtures/engine/ (synthetic FIXTURE data for the dry run and
+# engine-line tests, no real prices, margins or costs) is committed
+fixtures/*
+!fixtures/engine/
+
+# owner's mood references (other people's renders): never committed
+design-refs/
+__pycache__/
+
+# the pinned Real-ESRGAN binary and model (config/engine.json upscale; licences in ASSETS.md): local only, never committed
+/tools/
+
+# Claude Code's local session settings (W2, 20/10/2026): never committed
+.claude/

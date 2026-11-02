@@ -1,0 +1,28 @@
+{
+  "$comment": "R3 (RESTRUCTURE.md §2.1, §8 R3): the CEO's weekly priorities memo (src/engine/execs.mjs). The engine writes the week's inputs (memos/inputs-<YYYY-Www>.json: Finance, the COO's reports, Engineering in counts and titles; never a request's text, a ticket, a customer record or a named contact), then one CEO run writes memos/<YYYY-Www>.md, checked on write: priorities per active product, proposals with options, recommendation and cost. Proposals are documents in the Owner's office, never requests (locked rule ceo-recommends-only). Started by the owner on the page (spend confirmation) or by the routine rt_seed_ceo-weekly-memo once the owner arms it.",
+  "id": "ceo-memo",
+  "label": "CEO weekly memo",
+  "kind": "exec-memo",
+  "products": [
+    "station"
+  ],
+  "maxConcurrentJobs": 1,
+  "estimateUsd": {
+    "note": "the plan's estimate, not a measurement (RESTRUCTURE.md §8 R3: one CEO memo, about 80k tokens in and 5k out, Sonnet)",
+    "job": 0.21
+  },
+  "start": "inputs",
+  "steps": {
+    "inputs": {
+      "kind": "mechanical",
+      "fn": "inputs",
+      "next": "ceo"
+    },
+    "ceo": {
+      "kind": "agent",
+      "agent": "ceo",
+      "column": "memo",
+      "next": null
+    }
+  }
+}

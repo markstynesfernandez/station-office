@@ -1,0 +1,8 @@
+{
+  "$comment": "DEMO (npm run demo) only. Applied on top of config/station.config.json in the demo engine, never in a real one. These are NOT owner decisions: the real digital-download notice and personal-use licence are still DRAFT. The package gate requires owner-approved wording, so the demo marks these as approved DEMO values to show the whole line working.",
+  "set": {
+    "digital.listingNoticeStatus": "owner-approved DEMO value (simulated data; the real wording is still DRAFT)",
+    "digital.licences.personal-use.status": "owner-approved DEMO value (simulated data; the real wording is still DRAFT)",
+    "digital.aiDisclosure.text": "DEMO disclosure (simulated data): created by the seller using AI image generation tools and checked by the seller before listing."
+  }
+}

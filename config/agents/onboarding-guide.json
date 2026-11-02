@@ -1,0 +1,24 @@
+{
+  "$comment": "R1 (RESTRUCTURE.md §2.2, §2.3): in config from R1, \"not hired yet\" until R6. The engine refuses to run a not-hired agent and it costs nothing; its prompt, maxOutputTokens and write paths are set when it is hired. Model, effort and thinking are the owner's (R0.2, R0.3); every limit here is a proposal (§2.2 \"Limits (proposed)\").",
+  "key": "onboarding-guide",
+  "name": "ONBOARDING-GUIDE",
+  "department": "customer-success",
+  "status": "not-hired",
+  "phase": "R6",
+  "tier": "cheap",
+  "effort": "low",
+  "thinking": "off",
+  "tools": [
+    "fs_read",
+    "fs_list",
+    "fs_write"
+  ],
+  "limits": {
+    "maxTurns": 20
+  },
+  "proposals": [
+    "limits"
+  ],
+  "enabled": false,
+  "role": "Onboarding email drafts and checklists for a new customer."
+}
